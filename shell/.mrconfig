@@ -1,0 +1,25 @@
+[DEFAULT]
+# checkout to master if not already
+pre_update = [[ `git branch --show-current` == "master"  ]] || git checkout master
+
+[git/pyenv]
+checkout = git clone 'https://github.com/pyenv/pyenv.git' 'pyenv'
+
+[git/cookiecutter-pypackage]
+checkout = git clone 'https://github.com/audreyr/cookiecutter-pypackage.git' 'cookiecutter-pypackage'
+
+[git/feeds]
+checkout = git clone 'https://github.com/Kapeli/feeds.git' 'feeds'
+
+[git/rustlings]
+checkout = git clone 'https://github.com/rust-lang/rustlings' 'rustlings'
+post_checkout = cargo install --force --path .
+post_update = cargo install --force --path .
+
+# it breaks, regularly. forget upgrades
+[.emacs.d]
+pre_update = [[ `git branch --show-current` == "develop"  ]] || git checkout develop
+checkout = git clone --depth 1 'https://github.com/hlissner/doom-emacs' '.emacs.d'
+post_checkout = sh ./.emacs.d/bin/doom install
+update = sh ./bin/doom --yes upgrade
+

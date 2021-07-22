@@ -1,0 +1,235 @@
+// Place your key bindings in this file to override the defaults
+[
+    //
+    // ############################################################
+    // ##################### ADVANCED NEW FILE ####################
+    // ############################################################
+    //
+    // -- create
+    {
+        "key": "ctrl+n",
+        "command": "extension.advancedNewFile"
+    },
+    // ############################################################
+    // ############################ UI ############################
+    // ############################################################
+    //
+    // activity bar
+    // {
+    //     // show/hide activity bar
+    //     // i.e. the left action bar
+    //     "key": "alt+b",
+    //     "command": "workbench.action.toggleActivityBarVisibility",
+    //     "when": "editorFocus"
+    // },
+    // -- show context menu
+    {
+        "key": "alt+r",
+        "command": "editor.action.showContextMenu"
+    },
+    // -- hide everything, except editor
+    // {
+    //     "key": "alt+r",
+    //     "command": "workbench.action.maximiseEditor"
+    // },
+    // -- zen mode toggle
+    {
+        "key": "alt+z",
+        "command": "workbench.action.toggleZenMode"
+    },
+    //
+    // ############################################################
+    // ########################### UTIL ###########################
+    // ############################################################
+    //
+    // -- focus (editor)
+    {
+        "key": "alt+l",
+        "command": "-toggleFindInSelection",
+        "when": "editorFocus"
+    },
+    // -- hide everything, except editor
+    {
+        "key": "alt+b",
+        "command": "extension.multiCommand.execute",
+        "args": { "command": "multiCommand.showOnlyEditorGroup" },
+    },
+    // ############################################################
+    // ######################### TERMINAL #########################
+    // ############################################################
+    //
+    // NOTE: the LIST is the drop down list, and PANES are the
+    // visible terminal panes. You can add/remove/navigate through
+    // panes or list items.
+    //
+    // -- split (terminal)
+    {
+        // vertical
+        "key": "alt+v",
+        "command": "workbench.action.splitEditorOrthogonal",
+        "when": "editorFocus"
+    },
+    {
+        // horizontal
+        "key": "alt+s",
+        "command": "workbench.action.terminal.split",
+        "when": "terminalFocus"
+    },
+    // -- focus (terminal)
+    {
+        // focus (from editor)
+        // i.e. from editor, focus terminal
+        "key": "alt+j",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorFocus"
+    },
+    {
+        // next (pane)
+        "key": "alt+l",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus"
+    },
+    {
+        // previous (pane)
+        "key": "alt+h",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus"
+    },
+    {
+        // focus last focused (list)
+        "key": "alt+p",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        // focus next (list)
+        "key": "alt+n",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    // -- zoom in (terminal)
+    //{
+    //    // TODO: the terminal loses focus and you need to use the mouse, fix that
+    //    "key": "alt+z",
+    //    "command": "workbench.action.toggleMaximizedPanel",
+    //},
+    // -- create/destroy (terminal)
+    {
+        // remove focused (list)
+        "key": "alt+x",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+    {
+        // create (in list)
+        "key": "alt+c",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus"
+    },
+    //
+    // ############################################################
+    // ########################## EDITOR ##########################
+    // ############################################################
+    //
+    // NOTE: a group here means terminals or editors. To move from
+    // one group to another means to go from terminals to editos
+    // for example.
+    //
+    // Groups are treated discretely, it uses different sets of
+    // commands to navigate between terminal and editor groups.
+    // So you will see things like "when: terminalFocus" and
+    // "when: editorFocus" with the same sort of bindings.
+    //
+    // -- navigate (editor)
+    {
+        // focus editor (from terminal)
+        // i.e. from terminal, move up to editor
+        "key": "alt+k",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        // focus left editor
+        "key": "alt+l",
+        "command": "workbench.action.focusNextGroup",
+        "when": "editorFocus"
+    },
+    {
+        // focus right editor
+        "key": "alt+h",
+        "command": "workbench.action.focusPreviousGroup",
+        "when": "editorFocus"
+    },
+    {
+        // focus up (from editor)
+        // i.e. from editor, move up to another editor
+        "key": "alt+k",
+        "command": "workbench.action.focusAboveGroup",
+        "when": "editorFocus"
+    },
+    // -- split (editor)
+    {
+        // horizontal
+        "key": "alt+s",
+        "command": "workbench.action.splitEditor",
+        "when": "editorFocus"
+    },
+    // -- open/close (editor)
+    {
+        // close
+        "key": "alt+x",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "editorFocus"
+    },
+    // -- pin tab
+    {
+        "key": "ctrl+k shift+enter",
+        "command": "workbench.action.pinEditor",
+        "when": "editorFocus"
+    },
+    //
+    // ############################################################
+    // ######################### FZF FIND #########################
+    // ############################################################
+    //
+    // -- ripgrep search
+    {
+        "key": "alt+/",
+        "command": "fzf-quick-open.runFzfSearch",
+    },
+    //
+    // ############################################################
+    // ########################### GIT ############################
+    // ############################################################
+    //
+    // -- commit all
+    {
+        "key": "alt+enter",
+        "command": "git.commitAll"
+    },
+    // -- open changes (diff)
+    {
+        "key": "alt+o",
+        "command": "git.openChange"
+    },
+    //
+    // ############################################################
+    // ######################### TESTING ##########################
+    // ############################################################
+    //
+    // -- run at cursor
+    {
+        "key": "alt+;",
+        "command": "test-explorer.run-test-at-cursor"
+    },
+    // -- rerun last
+    {
+        "key": "alt+'",
+        "command": "test-explorer.rerun"
+    },
+    // -- debug THIS test
+    {
+        "key": "alt+[Backslash]", // [Backslash] is actually '#' (I don't know why).
+        "command": "test-explorer.debug-this-test"
+    }
+]

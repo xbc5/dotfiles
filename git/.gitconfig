@@ -1,0 +1,21 @@
+[merge]
+  tool = kdiff3
+[mergetool "kdiff3"]
+  trustExitCode = true
+
+[gpg]
+  program = gpg
+[core]
+  editor = vim
+[color]
+  ui = auto
+
+[diff]
+  tool = kitty
+[difftool]
+  trustExitCode = true
+[difftool "kitty"]
+  cmd = kitty +kitten diff $LOCAL $REMOTE
+[user]
+	name = xbc5
+	email = xbc5@/dev/null
