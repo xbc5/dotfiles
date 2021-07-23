@@ -68,6 +68,17 @@ return require('packer').startup({function(use)
       config = require("config.nvim-treesitter-textobjects"),
     }
 
+
+    ----------------------------------------------------------------------------
+    --                                GIT                                     --
+    ----------------------------------------------------------------------------
+    use {
+      'pwntester/octo.nvim',
+      config = require("config.octo"),
+      requires = {'nvim-telescope/telescope.nvim','kyazdani42/nvim-web-devicons'},
+    }
+
+
     ----------------------------------------------------------------------------
     --                                IDE                                     --
     ----------------------------------------------------------------------------
