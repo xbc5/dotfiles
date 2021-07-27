@@ -290,12 +290,10 @@ If REC is non-nil then do recursive search."
   )
   (map! :leader
         :prefix "n"
-        :desc "org-roam" "l"                   #'org-roam
-        :desc "org-roam-insert" "i"            #'org-roam-insert
         :desc "org-roam-switch-to-buffer" "b"  #'org-roam-switch-to-buffer
-        :desc "org-roam-find-file" "f"         #'org-roam-find-file
-        :desc "org-roam-show-graph" "g"        #'org-roam-show-graph
-        :desc "org-roam-insert" "i"            #'org-roam-insert
+        :desc "org-roam-node-find" "f"         #'org-roam-node-find
+        :desc "org-roam-graph" "g"             #'org-roam-graph
+        :desc "org-roam-node-insert" "i"       #'org-roam-node-insert
         :desc "org-roam-capture" "c"           #'org-roam-capture
   )
 )

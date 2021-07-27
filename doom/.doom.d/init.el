@@ -13,6 +13,8 @@
 ;;
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
+;;; Code:
+(setq org-roam-v2-ack t)
 
 (doom! :input
        ;;chinese
@@ -141,7 +143,7 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +roam +id)               ; organize your plain life in plain text
+       (org +roam2 +id)    ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -169,7 +171,7 @@
        ;;(wanderlust +gmail)
 
        :app
-       ;;calendar
+r      ;;calendar
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
