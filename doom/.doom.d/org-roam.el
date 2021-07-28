@@ -23,9 +23,7 @@
 (setq org-roam-capture-templates '(("i" "idea" plain "\n* Ideas"
                                     :if-new (file+head "${slug}-%<%Y%m%d%H%M%S>.org"
                                                         "#+title: ${title}")
-                                    :unnarrowed t
-                                    :kill-buffer t
-                                    :clock-in t)
+                                    :unnarrowed t)
                                    ("p" "project idea" plain "\n* Ideas"
                                     :if-new (file+head "project/%(+org-project-subdir)/${slug}-%<%Y%m%d%H%M%S>"
                                                        "#+title: ${title}")
