@@ -61,7 +61,7 @@
 (package! bibtex-completion) ; required by org-roam-bibtex
 (package! ivy-bibtex)
 (package! org-ref)
-(package! org-roam-server)
+(package! org-roam-server :disable t) ; not yet supported for roam v2
 
 (package! bug-hunter)
 

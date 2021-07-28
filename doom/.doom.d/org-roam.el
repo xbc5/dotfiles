@@ -10,6 +10,9 @@
 )
 
 
+(add-hook 'after-init-hook 'org-roam-mode)
+
+
 (setq org-roam-directory "~/org"
       org-roam-tag-sources '(prop all-directories)
       org-roam-file-completion-tag-position 'append ;; 'prepend | 'append | 'omit
