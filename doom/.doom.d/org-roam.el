@@ -1,13 +1,15 @@
 ;;; org-roam.el -*- lexical-binding: t; -*-
 
 (map! :leader
-      :prefix "n"
+      :prefix "r"
       :desc "org-roam-node-find" "f" #'org-roam-node-find
+      :desc "org-roam-alias-add" "a" #'org-roam-alias-add
+      :desc "org-roam-tag-add" "t" #'org-roam-tag-add
+      :desc "org-roam-refile" "rf" #'org-roam-refile
       :desc "org-roam-buffer-toggle" "l" #'org-roam-buffer-toggle
       :desc "org-roam-graph" "g" #'org-roam-graph
       :desc "org-roam-node-insert" "i" #'org-roam-node-insert
-      :desc "org-roam-capture" "c" #'org-roam-capture
-)
+      :desc "org-roam-capture" "c" #'org-roam-capture)
 
 
 (add-hook 'after-init-hook 'org-roam-mode)
