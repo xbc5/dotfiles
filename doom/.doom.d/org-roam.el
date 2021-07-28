@@ -16,23 +16,17 @@
       +org-roam-open-buffer-on-find-file nil)  ;; disable auto-loading of backlinks
 
 
-(setq org-roam-capture-templates '(("i" "idea" plain #'org-roam-capture--get-point
-                                    "\n\n* Ideas\n* Thoughts\n* Questions"
-                                    :file-name "${slug}-%<%Y%m%d%H%M%S>"
-                                    :head "#+TITLE: ${title}\n#+ROAM_TAGS: TODO %?"
-                                    :unnarrowed t)
-                                   ("t" "index" plain #'org-roam-capture--get-point
-                                    "\n\n* Index\n* Thoughts\n* Questions"
-                                    :file-name "${slug}-%<%Y%m%d%H%M%S>"
-                                    :head "#+TITLE: ${title}\n#+ROAM_ALIAS: ${title}\n#+ROAM_TAGS: index %?"
-                                    :unnarrowed t)
-                                   ("p" "project idea" plain #'org-roam-capture--get-point
-                                    "\n\n* Summary\n* Ideas\n* Thoughts\n* Questions"
-                                    :file-name "project/%(+org-project-subdir)/${slug}-%<%Y%m%d%H%M%S>"
-                                    :head "#+TITLE: ${title}\n#+ROAM_TAGS: %?"
-                                    :unnarrowed t)
-                                   ("b" "bib notes" plain #'org-roam-capture--get-point
-                                    "\n\n* Notes\n* Thoughts\n* Questions"
-                                    :file-name "bib/notes/${slug}"
-                                    :head "#+TITLE: %?\n#+ROAM_KEY: cite:${slug}\n#+ROAM_TAGS: ${slug} bib"
-                                    :unnarrowed t)))
+(setq org-roam-capture-templates '(("i" "idea" plain "\n* Ideas"
+                                    :if-new (file+head "${slug}-%<%Y%m%d%H%M%S>.org"
+                                                        "#+title: ${title}")
+                                    :unnarrowed t
+                                    :kill-buffer t
+                                    :clock-in t)
+                                   ("p" "project idea" plain "\n* Ideas"
+                                    :if-new (file+head "project/%(+org-project-subdir)/${slug}-%<%Y%m%d%H%M%S>"
+                                                       "#+title: ${title}")
+                                     :unnarrowed t)
+                                   ("b" "bib notes" plain "\n* Notes"
+                                     :if-new (file+head "bib/notes/${slug}"
+                                                        ":PROPERTIES:\n:ROAM_REFS: cite:${slug}\n:END:\n#+title: ${title}")
+                                     :unnarrowed t)))
