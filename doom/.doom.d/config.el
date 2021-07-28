@@ -381,6 +381,7 @@ If REC is non-nil then do recursive search."
 )
 
 
-(after! org-roam-server (load! "org-roam-server.el"))
-(after! org-roam (load! "org-roam.el"))
-(after! org-roam-bibtex (load! "org-roam-bibtex.el"))
+(load! "org-roam-server.el")
+(load! "org-roam.el")
+(load! "org-roam-bibtex.el")
+

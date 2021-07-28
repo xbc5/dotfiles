@@ -1,5 +1,4 @@
 ;;; org-roam.el -*- lexical-binding: t; -*-
-
 (map! :leader
       :prefix "r"
       :desc "org-roam-node-find" "f" #'org-roam-node-find
@@ -35,3 +34,5 @@
                                      :if-new (file+head "bib/notes/${slug}"
                                                         ":PROPERTIES:\n:ROAM_REFS: cite:${slug}\n:END:\n#+title: ${title}")
                                      :unnarrowed t)))
+
+(org-roam-setup)
