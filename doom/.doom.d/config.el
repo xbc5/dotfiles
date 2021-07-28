@@ -261,42 +261,9 @@ If REC is non-nil then do recursive search."
 ;; TODO: disable backlink mode, it's only useful /sometimes/
 ;;
 (add-hook 'after-init-hook 'org-roam-mode) ;; builds a roam cache etc.
-(after! org-roam
-  (setq org-roam-directory "~/org"
-        org-roam-index-file "index.org"
-        org-roam-tag-sources '(prop all-directories)
-        org-roam-file-completion-tag-position 'append ;; 'prepend | 'append | 'omit
-        +org-roam-open-buffer-on-find-file nil  ;; disable auto-loading of backlinks
-        org-roam-capture-templates '(("i" "idea" plain #'org-roam-capture--get-point
-                                      "\n\n* Ideas\n* Thoughts\n* Questions"
-                                      :file-name "${slug}-%<%Y%m%d%H%M%S>"
-                                      :head "#+TITLE: ${title}\n#+ROAM_TAGS: TODO %?"
-                                      :unnarrowed t)
-                                     ("t" "index" plain #'org-roam-capture--get-point
-                                      "\n\n* Index\n* Thoughts\n* Questions"
-                                      :file-name "${slug}-%<%Y%m%d%H%M%S>"
-                                      :head "#+TITLE: ${title}\n#+ROAM_ALIAS: ${title}\n#+ROAM_TAGS: index %?"
-                                      :unnarrowed t)
-                                     ("p" "project idea" plain #'org-roam-capture--get-point
-                                      "\n\n* Summary\n* Ideas\n* Thoughts\n* Questions"
-                                      :file-name "project/%(+org-project-subdir)/${slug}-%<%Y%m%d%H%M%S>"
-                                      :head "#+TITLE: ${title}\n#+ROAM_TAGS: %?"
-                                      :unnarrowed t)
-                                     ("b" "bib notes" plain #'org-roam-capture--get-point
-                                      "\n\n* Notes\n* Thoughts\n* Questions"
-                                      :file-name "bib/notes/${slug}"
-                                      :head "#+TITLE: %?\n#+ROAM_KEY: cite:${slug}\n#+ROAM_TAGS: ${slug} bib"
-                                      :unnarrowed t))
-  )
-  (map! :leader
-        :prefix "n"
-        :desc "org-roam-switch-to-buffer" "b"  #'org-roam-switch-to-buffer
-        :desc "org-roam-node-find" "f"         #'org-roam-node-find
-        :desc "org-roam-graph" "g"             #'org-roam-graph
-        :desc "org-roam-node-insert" "i"       #'org-roam-node-insert
-        :desc "org-roam-capture" "c"           #'org-roam-capture
-  )
-)
+
+(after! org-roam (load! "org-roam.el"))
+
 (after! org-roam-bibtex
   (setq orb-templates
         '(("b" "bib" plain (function org-roam-capture--get-point)
