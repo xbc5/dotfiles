@@ -84,7 +84,7 @@ set shortmess+=c
 
 " -- completion-nvim
 " " LSP hover for completion items
-" let g:completion_enable_auto_hover = 1
+" let g:completion_enablHEA
 " let g:completion_enable_auto_signature = 1
 " " in order of priority: high => low
 " let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
@@ -111,6 +111,9 @@ nnoremap <leader>bk <cmd>q<cr>
 " move line up/down
 noremap <C-k> <cmd>m -2<cr>
 noremap <C-j> <cmd>m +1<cr>
+" move selection up/down
+vnoremap J :m '>+2<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " ts-hint-object
 omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
@@ -174,6 +177,29 @@ nnoremap <silent>ljd <cmd>lua vim.lsp.buf.definition()<CR>
 "
 nnoremap <leader>ps <cmd>PackerSync<cr>
 nnoremap <leader>pc <cmd>PackerCompile<cr>
+
+
+"  +-------------------------------------------------+
+"  |                      REMAPS                     |
+"  +-------------------------------------------------+
+"
+" yank to end of line
+nnoremap Y y$
+" centre screen while navigating searches etc: zz:centre; zv:open folds;  
+nnoremap n nzzzv
+nnoremap N Nzzzv
+" keep cursor in same place while joining lines: mz:mark z; J; `z: jump to z;
+nnoremap J mzJ`z
+" undo break points: C-g:set undo break point.
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ; ;<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+" fix relative jumps history off-by-one issue
+" if the jump is greater than 5 lines, add it to the jump history (m')
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 
 "  +-------------------------------------------------+
