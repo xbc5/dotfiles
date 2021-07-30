@@ -82,17 +82,6 @@ imap <silent> <C-Space> <Plug>(completion_trigger)
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
-" -- completion-nvim
-" " LSP hover for completion items
-" let g:completion_enablHEA
-" let g:completion_enable_auto_signature = 1
-" " in order of priority: high => low
-" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
-" let g:completion_matching_smart_case = 1
-" " in addition to trigger chars set by lang server
-" let g:completion_trigger_character = ['.', '::']
-" let g:completion_trigger_on_delete = 1
-" let g:completion_timer_cycle = 200
 
 " -- nvim-compe
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -125,7 +114,6 @@ vnoremap <silent> m :lua require('tsht').nodes()<CR>
 "  +-------------------------------------------------+
 "
 nnoremap <leader>gd <cmd>Gitsigns diffthis<cr>
-"nnoremap <leader>gg <cmd>Neogit<cr>
 nnoremap <silent> <leader>gg <cmd>lua require('lspsaga.floaterm').open_float_terminal("lazygit")<CR>
 
 
