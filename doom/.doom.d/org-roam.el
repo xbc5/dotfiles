@@ -25,11 +25,11 @@
                                                         "#+title: ${title}")
                                     :unnarrowed t)
                                    ("p" "project idea" plain "\n* Ideas"
-                                    :if-new (file+head "project/%(+org-project-subdir)/${slug}-%<%Y%m%d%H%M%S>"
+                                    :if-new (file+head "project/%(+org-project-subdir)/${slug}-%<%Y%m%d%H%M%S>.org"
                                                        "#+title: ${title}")
                                      :unnarrowed t)
                                    ("b" "bib notes" plain "\n* Notes"
-                                     :if-new (file+head "bib/notes/${slug}"
+                                     :if-new (file+head "bib/notes/${slug}.org"
                                                         ":PROPERTIES:\n:ROAM_REFS: cite:${slug}\n:END:\n#+title: ${title}")
                                      :unnarrowed t)))
 
