@@ -1,4 +1,4 @@
-personal_ws-1.1 en 407 
+personal_ws-1.1 en 415 
 APIs
 APM
 APMs
@@ -47,12 +47,14 @@ DAP
 DDD
 DDoS
 DLC
+DNS
 DOI
 DOM
 DVI
 Datadog
 Deci
 DevOps
+Djirdeh
 Dobrucki
 DockerHub
 Dockerfile
@@ -325,6 +327,7 @@ incentivise
 incentivised
 init
 initramfs
+inlining
 innerWidth
 jank
 keymaps
@@ -349,6 +352,7 @@ namespaces
 noticeability
 npmrc
 nvim
+onload
 opentracker
 orchestrator
 pentests
@@ -356,6 +360,10 @@ performant
 picas
 polysemic
 positivity
+precache
+prefetch
+preload
+preloading
 preprocess
 preprocessing
 preprocessor
