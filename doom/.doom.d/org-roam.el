@@ -15,6 +15,7 @@
 
 
 (setq org-roam-directory "~/org"
+      org-roam-completion-everywhere t
       org-roam-tag-sources '(prop all-directories)
       org-roam-file-completion-tag-position 'append ;; 'prepend | 'append | 'omit
       +org-roam-open-buffer-on-find-file nil)  ;; disable auto-loading of backlinks

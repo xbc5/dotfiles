@@ -384,4 +384,4 @@ If REC is non-nil then do recursive search."
 (load! "org-roam-server.el")
 (load! "org-roam.el")
 (load! "org-roam-bibtex.el")
-
+(load! "emacs.el")
