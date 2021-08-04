@@ -160,16 +160,6 @@ If REC is non-nil then do recursive search."
 (setq dash-docs-docsets-path "~/doc/docsets"
       dash-docs-browser-func 'eww)
 
-(after! org-roam-bibtex
-  (setq orb-templates
-        '(("b" "bib" plain (function org-roam-capture--get-point)
-           "\n\n* Context\n* Notes\n* Thoughts\n* Questions"
-           :file-name "bib/notes/${citekey}"
-           :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS: \"bib notes\" unfinished TODO %?"
-           :unnarrowed t)
-        )
-  )
-)
 
 ;; ######################################################################
 ;; ############################# ORG-REF ################################
