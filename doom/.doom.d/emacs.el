@@ -1,5 +1,3 @@
 ;;; ../.dotfiles/doom/.doom.d/emacs.el -*- lexical-binding: t; -*-
 
-(map! :leader
-      :prefix "e"
-      :desc "completion-at-point" "c" #'completion-at-point)
+(map! :desc "completion-at-point" "<C-SPC>" #'completion-at-point)
