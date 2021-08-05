@@ -18,6 +18,7 @@ if not sys.is_user() or sys.is_templatevm() then return end
 
 -- auto compile after updating this file;
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+local const = require("lib.const")
 
 -- install it if it doesn't already exist.
 local function auto_install_packer()
@@ -210,18 +211,18 @@ return require('packer').startup({function(use)
     use {
       'mhartington/formatter.nvim',
       config = require("config.formatter"),
-      run = {
-        function() npm.sync("prettier") end,
-        function() npm.sync("@fsouza/prettierd") end,
-      },
+      run = function()
+        npm.sync("prettier")
+        npm.sync("@fsouza/prettierd")
+      end,
     }
     use {
       'mfussenegger/nvim-lint',
       config = require("config.nvim-lint"),
-      run = {
-        function() npm.sync("eslint_d") end,
-        function() npm.sync("@typescript-eslint/eslint-plugin") end,
-      },
+      run = function()
+        npm.sync("eslint_d")
+        npm.sync("@typescript-eslint/eslint-plugin")
+      end,
     }
   end,
 
