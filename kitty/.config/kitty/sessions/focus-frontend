@@ -1,0 +1,11 @@
+cd ~/projects/focus/frontend
+os_window_class term
+launch --title focus/server npm run start:dev
+
+new_os_window
+os_window_class term
+launch --title focus/term zsh
+
+new_os_window
+os_window_class ide
+launch --title focus/ide nvim
