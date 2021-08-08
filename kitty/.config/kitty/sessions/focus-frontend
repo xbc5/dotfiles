@@ -4,8 +4,10 @@ launch --title focus/server npm run start:dev
 
 new_os_window
 os_window_class term
+cd ~/projects/focus/frontend
 launch --title focus/term zsh
 
 new_os_window
 os_window_class ide
+cd ~/projects/focus/frontend
 launch --title focus/ide nvim
