@@ -66,7 +66,7 @@ return require('packer').startup({function(use)
     use {
       'nvim-treesitter/nvim-treesitter-textobjects',
       requires = { "nvim-treesitter/nvim-treesitter" },
-      config = require("config.nvim-treesitter-textobjects"),
+      -- configured in treesitter config module.
     }
 
 
