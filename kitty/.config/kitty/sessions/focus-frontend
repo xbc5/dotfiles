@@ -1,6 +1,6 @@
 cd ~/projects/focus/frontend
 os_window_class term
-launch --title focus/server npm run start:dev
+launch --title focus/server npm run watch
 
 new_os_window
 os_window_class term
