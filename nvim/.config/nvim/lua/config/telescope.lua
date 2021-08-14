@@ -1,5 +1,7 @@
 return function()
-  require('telescope').setup {
+  local telescope = require("telescope")
+
+  telescope.setup {
     -- these are mostly defaults
     defaults = {
       vimgrep_arguments = {
@@ -49,12 +51,31 @@ return function()
         override_generic_sorter = true,
         override_file_sorter = true,
         case_mode = "smart_case",        -- smart_case|ignore_case|respect_case
+      },
+      project = { -- project.nvim
+        base_dirs = {
+          "~/projects",
+          "~/practice",
+          "~/.dotfiles",
+          -- {'~/dev/src3', max_depth = 4}, -- e.g.
+        },
+        hidden_files = true,
       }
     }
   }
 
 
-  require('telescope').load_extension('fzf') -- MUST call AFTER setup
+  telescope.load_extension('fzf') -- MUST call AFTER setup
+
+
+  -- project.nvim
+  telescope.load_extension('project') -- project fuzzy finder
+  vim.api.nvim_set_keymap(
+    'n',
+    '<leader>fpp',
+    ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
+    {noremap = true, silent = true}
+  )
 
 
   local maps = {
