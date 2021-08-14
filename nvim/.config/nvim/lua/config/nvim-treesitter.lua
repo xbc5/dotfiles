@@ -56,6 +56,7 @@ return function()
         },
       },
       move = {
+        -- navigate; jump to start/end of functions/classes
         enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
@@ -73,6 +74,16 @@ return function()
         goto_previous_end = {
           ["[M"] = "@function.outer",
           ["[]"] = "@class.outer",
+        },
+      },
+      swap = {
+        -- swap function parameters
+        enable = true,
+        swap_next = {
+          ["<leader>a"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["<leader>A"] = "@parameter.inner",
         },
       },
     },

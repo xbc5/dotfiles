@@ -58,17 +58,6 @@ return require('packer').startup({function(use)
       config = require("config.nvim-autopairs"),
     }
 
-    use {
-      "mfussenegger/nvim-ts-hint-textobject",
-      requires = { "nvim-treesitter/nvim-treesitter" },
-    }
-
-    use {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      requires = { "nvim-treesitter/nvim-treesitter" },
-      -- configured in treesitter config module.
-    }
-
 
     ----------------------------------------------------------------------------
     --                                GIT                                     --
@@ -87,6 +76,20 @@ return require('packer').startup({function(use)
       'kabouzeid/nvim-lspinstall',
       requires = { "neovim/nvim-lspconfig" },
       config =  require("config.nvim-lspinstall").config,
+    }
+
+    use {
+      "mfussenegger/nvim-ts-hint-textobject",
+      requires = { "nvim-treesitter/nvim-treesitter" },
+      after = "nvim-treesitter",
+      -- configured in treesitter config module.
+    }
+
+    use {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      requires = { "nvim-treesitter/nvim-treesitter" },
+      after = "nvim-treesitter",
+      -- configured in treesitter config module.
     }
 
     use {
