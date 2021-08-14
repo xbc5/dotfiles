@@ -133,6 +133,11 @@ return require('packer').startup({function(use)
       -- TODO: auto install and auto update pynvim
     }
 
+    use {
+      "akinsho/nvim-toggleterm.lua",
+      config = require("config.nvim-toggleterm").config,
+    }
+
     ----------------------------------------------------------------------------
     --                            LOOK & FEEL                                 --
     ----------------------------------------------------------------------------
