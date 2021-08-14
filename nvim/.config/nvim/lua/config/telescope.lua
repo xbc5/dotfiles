@@ -79,8 +79,6 @@ return function()
 
 
   local maps = {
-    -- these two I use all the time, so make the map easy
-    { "n", "find_files" },
     { "m", "buffers" },
     -- often used
     { "fgg", "live_grep" },
@@ -107,5 +105,6 @@ return function()
   end
 
   vim.api.nvim_set_keymap('n', '<leader>fcc', '<cmd>lua require("lib.telescope").find_nvim_config()<cr>', { noremap = true })
+  vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua require("lib.telescope").find_hidden()<cr>', { noremap = true })
 
 end
