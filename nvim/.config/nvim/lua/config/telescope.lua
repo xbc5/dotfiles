@@ -57,6 +57,7 @@ return function()
           "~/projects",
           "~/practice",
           "~/.dotfiles",
+          "~/git"
           -- {'~/dev/src3', max_depth = 4}, -- e.g.
         },
         hidden_files = true,
