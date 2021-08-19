@@ -156,7 +156,7 @@ nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_ne
 " terminal
 tnoremap <silent> <Esc><Esc> <cmd>lua require('lspsaga.floaterm').close_float_terminal()<CR>
 " jumps
-nnoremap <silent>ljd <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> <leader>ljd <cmd>lua vim.lsp.buf.definition()<CR>
 
 
 "  +-------------------------------------------------+

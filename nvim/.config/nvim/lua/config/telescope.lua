@@ -96,6 +96,8 @@ return function()
     { "fwd", "lsp_workspace_diagnostics" },
     { "fbd", "lsp_document_diagnostics" },
     { "fws", "lsp_workspace_symbols" },
+    { "fii", "lsp_implementations" },
+    { "fwr", "lsp_references" },
   }
 
   for _, m in pairs(maps) do
