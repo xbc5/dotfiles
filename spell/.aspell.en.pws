@@ -1,4 +1,4 @@
-personal_ws-1.1 en 419 
+personal_ws-1.1 en 422 
 APIs
 APM
 APMs
@@ -23,6 +23,8 @@ CLI
 CLV
 CMD
 CORS
+CRDT
+CRDTs
 CRO
 CSSOM
 CSV
@@ -228,6 +230,7 @@ UID
 UIDs
 UML
 URIs
+UUID
 UX
 Uber
 VC
