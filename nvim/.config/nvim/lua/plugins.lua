@@ -141,6 +141,11 @@ return require('packer').startup({function(use)
       config = require("config.nvim-toggleterm").config,
     }
 
+    -- PlantUML
+    use {
+      "weirongxu/plantuml-previewer.vim",
+      requires = { "aklt/plantuml-syntax", "tyru/open-browser.vim" }
+    }
     ----------------------------------------------------------------------------
     --                            LOOK & FEEL                                 --
     ----------------------------------------------------------------------------
