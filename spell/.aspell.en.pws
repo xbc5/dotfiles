@@ -1,4 +1,4 @@
-personal_ws-1.1 en 428 
+personal_ws-1.1 en 431 
 APIs
 APM
 APMs
@@ -193,6 +193,7 @@ SHA
 SMACSS
 SOCA
 SOCO
+SSI
 SSL
 SSR
 STRT
@@ -344,6 +345,7 @@ jank
 keymaps
 libluv
 linearizability
+linearizable
 listicles
 lockfile
 lua
@@ -389,6 +391,7 @@ saltDocs
 semanage
 sensorimotor
 serializability
+serializable
 setenforce
 setuid
 sidegraded
