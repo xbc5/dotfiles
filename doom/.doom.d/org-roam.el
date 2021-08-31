@@ -14,6 +14,13 @@
 (add-hook 'after-init-hook 'org-roam-mode)
 
 
+;; batch all SQL operations as a single transaction (fixes slow file saves).
+(advice-add 'org-roam-db-update-file :around
+              (defun +org-roam-db-update-file (fn &rest args)
+                  (emacsql-with-transaction (org-roam-db)
+                    (apply fn args))))
+
+
 (setq org-roam-directory "~/org"
       org-roam-completion-everywhere t
       org-roam-tag-sources '(prop all-directories)
