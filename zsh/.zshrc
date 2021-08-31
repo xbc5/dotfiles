@@ -52,6 +52,7 @@ PATH+=":${PYTHONPATH_USER}";
 PATH+=":${HOME}/bin";
 PATH+=":${HOME}/.emacs.d/bin";
 PATH+=":${HOME}/.luarocks/bin";
+PATH+=":${HOME}/WIP";
 [[ `command -v go` ]] && PATH+=":$(go env GOPATH)/bin";
 export PATH;
 
