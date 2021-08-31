@@ -85,6 +85,9 @@ zinit snippet OMZ::plugins/gitignore/gitignore.plugin.zsh
 # ssh-agent
 zinit ice lucid wait
 zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+# tmux
+zinit ice lucid wait
+zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 # cd - fzf
 zinit ice lucid wait
 zinit light changyuheng/zsh-interactive-cd
