@@ -1,4 +1,4 @@
-personal_ws-1.1 en 436 
+personal_ws-1.1 en 448 
 APIs
 APM
 APMs
@@ -14,6 +14,7 @@ Babich
 Baeldung
 Bandura
 Benbasat
+BerkeleyDB
 Bing
 Bringhurst
 BuildKit
@@ -55,6 +56,7 @@ DOI
 DOM
 DOMContentLoaded
 DVI
+DataStax
 Datadog
 Deci
 DevOps
@@ -67,6 +69,7 @@ Dockerised
 EDID
 ENTRYPOINT
 ESLint
+ElasticSearch
 Eyal
 FFI
 FOMO
@@ -80,8 +83,11 @@ GC
 GDPR
 GOTO
 GRKERNSEC
+Gephi
+Girgraph
 Gorhill
 Grafana
+GraphML
 GraphQL
 HAProxy
 HATEOAS
@@ -107,9 +113,11 @@ ITCSS
 IndexedDB
 Iterable
 JDBC
+JDK
 JPG
 JS
 JSON
+JanusGraph
 Jinja
 KMS
 Kahnerman
@@ -132,6 +140,7 @@ Linearizability
 LoadBalancer
 Lodash
 Lua
+Lucene
 Luntz
 MCS
 MDN
@@ -166,6 +175,7 @@ PerformanceEntry
 Pingdom
 Pino
 Pinterest
+Plurad
 Plutchik's
 Printwand
 Printwand's
@@ -332,6 +342,7 @@ freemium
 frontend
 func
 geolocation
+geospatial
 getElementById
 getsebool
 globbing
@@ -413,6 +424,7 @@ templating
 tetradic
 transpile
 transpiled
+traverser
 trigram
 trigrams
 tsconfig
