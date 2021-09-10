@@ -44,7 +44,6 @@ return require('packer').startup({function(use)
  
     use 'wbthomason/packer.nvim' -- manage packer updates
     -- use 'nvim-lua/completion-nvim'
-    use "lukas-reineke/indent-blankline.nvim"
     use 'b3nj5m1n/kommentary'
     -- use 'takac/vim-hardtime'
 
@@ -72,6 +71,11 @@ return require('packer').startup({function(use)
     ----------------------------------------------------------------------------
     --                                IDE                                     --
     ----------------------------------------------------------------------------
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = require("config.indent-blanklines-nvim"),
+    }
+
     use {
       'kabouzeid/nvim-lspinstall',
       requires = { "neovim/nvim-lspconfig" },
