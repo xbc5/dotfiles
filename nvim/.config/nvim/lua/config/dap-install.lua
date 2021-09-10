@@ -1,7 +1,7 @@
 return function()
   local dap_install = require("dap-install")
 
-  dap_install.config("jsnode_dbg", {
+  dap_install.config("jsnode", {
     adapters = {
       type = 'executable',
       command = 'node',
