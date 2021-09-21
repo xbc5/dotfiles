@@ -3,17 +3,14 @@
 -- * PackerSync will ask to remove packages that are not specified in here;
 -- * you can test that a plugin has loaded: p = packer_plugins["foo"]; p and p.loaded;
 -- * the log file is @ `echo stdpath(cache)`, typically ~/.cache/nvim;
---
--- NOTE: make sure that this is the root of all of your plugin configuration, because
---  it will not run under Qubes templates, or as root. It must not break anything if it
---  doesn't run.
-
 
 local sys = require("lib.sys")
 local npm = require("lib.npm")
 
-
 -- don't run any installations as root or in Qubes templates
+-- NOTE: make sure that this is the root of all of your plugin configuration, because
+--  it will not run under Qubes templates, or as root. It must not break anything if it
+--  doesn't run.
 if not sys.is_user() or sys.is_templatevm() then return end
 
 -- auto compile after updating this file;
@@ -71,6 +68,12 @@ return require('packer').startup({function(use)
     ----------------------------------------------------------------------------
     --                                IDE                                     --
     ----------------------------------------------------------------------------
+    use {
+      'abecodes/tabout.nvim',
+      config = require("config.tabout"),
+      requires = {'nvim-treesitter'},
+    }
+
     use {
       "lukas-reineke/indent-blankline.nvim",
       config = require("config.indent-blanklines-nvim"),
