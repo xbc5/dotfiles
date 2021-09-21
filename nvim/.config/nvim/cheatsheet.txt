@@ -12,3 +12,6 @@ Search up to {pat}                                          | /{pat}
 ## marks @boundaries @boundary
 Implicitly marked boundaries for yanked/pasted text         | [ ]
 Implicitly marked boundaries for visual selection           | < >
+
+## navigation @jumps @lsp @lsp-saga
+Select references from a tooltip, and optionally jump       | <leader>lr
