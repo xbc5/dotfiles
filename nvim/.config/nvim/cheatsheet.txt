@@ -2,19 +2,71 @@
 Toggle case (whole line)                                    | g~~
 Repeat a replace/substitute command for the entire buffer   | g&
 
-## text-objects
+## text-objects-commands
 Find up to and including {c}                                | f{c}
 Reverse find up to and including {c}                        | F{c}
 Find up to {c}                                              | t{c}
 Reverse find up to {c}                                      | T{c}
 Search up to {pat}                                          | /{pat}
+Reformat (hard wrap) lines                                  | gq{o}
+Capitalise object                                           | gU{o}
+Uncapitalise object                                         | gu{o}
+Toggle capitalisation                                       | g~{o}
+
+## text-objects
+Paragraph, where {c} is a,i etc.                            | {c}p
+Line                                                        | q
+
+## text-object @examples
+Capitalise whole line                                       | gUU
+Toggle capitalisation of entire line                        | g~~
+Toggle capitalisation of word                               | g~iw
+Uncapitalise whole line                                     | guu
+Capitalise paragraph                                        | gUip
+Reformat entire (long) line                                 | gqq
+
 
 ## marks @boundaries @boundary
 Implicitly marked boundaries for yanked/pasted text         | [ ]
 Implicitly marked boundaries for visual selection           | < >
 
-## navigation @jumps @lsp @lsp-saga
+## lsp @jumps @lsp-saga
 Select references from a tooltip, and optionally jump       | <leader>lr
+
+## movement
+Jump to line                                                | {n}gg
+Scroll N lines down                                         | {n}<C-e>
+Scroll N lines up                                           | {n}<C-y>
+Scroll full screen forward                                  | <C-f>
+Scroll full screen back                                     | <C-b>
+Jump to Nth % of file                                       | {n}%
+Move to beginning of line (including whitespace)            | 0
+Jump to the bottom of the screen                            | L
+Move to end of sentence                                     | )
+Move to beginning of sentence                               | (
+Jump to last insert spot                                    | gi
+Move down a single line in a text block                     | gj
+Move up a single line in a text block                       | gk
+Move to end of visual line in a text block                  | g$
+Move to beginning of visual line in a text block            | g0
+
+
+## edit
+Join lines without spaces                                   | gJ
+
+## files
+Navigate to selected file name (relative of absolute)       | gf
+
+## visual-mode
+Rehighlight last selected                                   | gv
+
+## commands
+Enter command as normal mode action                         | :norm
+Ready file into current buffer                              | :read
+
+## search
+Search next word                                            | #
+Search previous word                                        | *
 
 ## vim-surround @text-objects
 Change "foo" to <p>foo</p>                                  | cs"<p>
