@@ -15,3 +15,14 @@ Implicitly marked boundaries for visual selection           | < >
 
 ## navigation @jumps @lsp @lsp-saga
 Select references from a tooltip, and optionally jump       | <leader>lr
+
+## vim-surround @text-objects
+Change "foo" to <p>foo</p>                                  | cs"<p>
+Change HTML tag to "                                        | cst"
+Remove surrounding "foo"                                    | ds"
+Surround with brackets: [foo]    ('iw' is insert word)      | ysiw]
+Surrounf with brackets: [ foo ]  (i.e. with space)          | ysiw[
+Surround with tag: <p>foo</foo>                             | ysiw<p>
+Change from one bracket to another                          | cs[{
+Wrap the entire line with parens                            | yssb | yss(
+Revert to original text                                     | ds{ds]
