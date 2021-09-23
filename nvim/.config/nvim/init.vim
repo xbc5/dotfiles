@@ -29,6 +29,8 @@ map <Down> <Nop>
 map <Left> <Nop>
 map <Right> <Nop>
 map <Delete> <Nop>
+map <PageUp> <Nop>
+map <PageDown> <Nop>
 
 
 "  +-------------------------------------------------+
