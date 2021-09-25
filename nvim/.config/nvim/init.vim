@@ -98,7 +98,7 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 "  +-------------------------------------------------+
 "
 " -- built in
-nnoremap <leader>bk <cmd>q<cr>
+nnoremap <silent> <leader>bk <cmd>bd<cr>
 " move line up/down
 noremap <C-k> <cmd>m -2<cr>
 noremap <C-j> <cmd>m +1<cr>
@@ -132,6 +132,14 @@ nnoremap <silent> <leader>fd :Format<CR>
 "
 nnoremap <leader>hw <cmd>HopWord<cr>
 
+
+"  +-------------------------------------------------+
+"  |                     JUMPWIRE                    |
+"  +-------------------------------------------------+
+noremap <leader>jt :lua require('jumpwire').jump('test')<CR>
+noremap <leader>ji :lua require('jumpwire').jump('implementation')<CR>
+noremap <leader>jm :lua require('jumpwire').jump('markup')<CR>
+noremap <leader>js :lua require('jumpwire').jump('style')<CR>
 
 "  +-------------------------------------------------+
 "  |                        LSP                      |

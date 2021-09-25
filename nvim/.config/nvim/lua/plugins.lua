@@ -69,6 +69,11 @@ return require('packer').startup({function(use)
     --                                IDE                                     --
     ----------------------------------------------------------------------------
     use {
+      'micmine/jumpwire.nvim',
+      config = require('config.jumpwire'),
+    }
+
+    use {
       'abecodes/tabout.nvim',
       config = require("config.tabout"),
       requires = {'nvim-treesitter'},
