@@ -108,7 +108,6 @@ return require('packer').startup({function(use)
       -- run :checkhealth nvim_treesitter to debug
       -- there's a playground plugin (visual tree-walker) if you wish to do some hacking
       'nvim-treesitter/nvim-treesitter',
-      lock = true, -- ignore until nvim v0.6.0, until then nightly is unstable. there might be a "stable" tag that you can pull
       run = {':TSUpdate'}, -- instead use ensure_installed config option for installing parsers.
       config = require("config.nvim-treesitter"),
     }
