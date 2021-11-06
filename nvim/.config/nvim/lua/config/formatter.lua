@@ -1,3 +1,5 @@
+local npm = require("lib.npm")
+
 --[[
 Each formatter should return a table that consiste of:
   exe: the program you wish to run
@@ -30,7 +32,7 @@ return function()
     config.filetype[t] = {
       function()
         return {
-          exe = "prettierd",
+          exe = "./node_modules/.bin/prettierd",
           args = {vim.api.nvim_buf_get_name(0)},
           stdin = true
         }
