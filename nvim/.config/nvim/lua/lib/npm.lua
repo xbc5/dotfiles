@@ -1,4 +1,5 @@
 local sys = require("lib.sys")
+local fs = require("lib.fs")
 
 
 local M = {}
@@ -24,6 +25,32 @@ end
 
 function M.install(pkg)
   sys.shell_cmd("npm i -g "..pkg, "QUIET")
+end
+
+
+-- Get the local NPM bin directory. If you pass in a module name, it will
+-- append it to the path.
+-- bin() => /foo/node_modules/.bin
+-- bin("module") => /foo/node_modules/.bin/module
+-- It will return nil if LSP is not attached (so cannot find workspace root)
+-- or if node_modules/.bin doesn't exist
+function M.bin(module)
+  local root = fs.root_dir()
+  if (root and fs.is_dir(root)) then -- has workspace
+    local bin = fs.join(root, "node_modules", ".bin")
+    if (fs.is_dir(bin)) then -- has local npm
+      if not module then return bin end -- only bin path wanted
+      local path = fs.join(bin, module)
+      if not fs.exists(path) then -- module not found
+        print("npm.bin(): local module NOT FOUND: '"..module.."'. You must install it into your local repo.")
+        return nil
+      end
+      return path
+    end
+  else
+    print("npm.bin(): cannot find workspace root, ensure LSP is attached.")
+  end
+  return nil
 end
 
 
