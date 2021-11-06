@@ -8,6 +8,7 @@ return function()
 
 
   require("lint").linters_by_ft = {
-    typescript = {'eslint_d'} -- my own linter @ [lua/]lint/linter/eslint.lua
+    -- using LSP eslint for now
+    -- typescript = {'eslint_d'} -- my own linter @ [lua/]lint/linter/eslint.lua
   }
 end
