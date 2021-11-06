@@ -34,7 +34,7 @@ end
 -- bin("module") => /foo/node_modules/.bin/module
 -- It will return nil if LSP is not attached (so cannot find workspace root)
 -- or if node_modules/.bin doesn't exist
-function M.bin(module)
+function M.local_bin(module)
   local root = fs.root_dir()
   if (root and fs.is_dir(root)) then -- has workspace
     local bin = fs.join(root, "node_modules", ".bin")
@@ -42,13 +42,13 @@ function M.bin(module)
       if not module then return bin end -- only bin path wanted
       local path = fs.join(bin, module)
       if not fs.exists(path) then -- module not found
-        print("npm.bin(): local module NOT FOUND: '"..module.."'. You must install it into your local repo.")
+        print("npm.local_bin(): local module NOT FOUND: '"..module.."'. You must install it into your local repo.")
         return nil
       end
       return path
     end
   else
-    print("npm.bin(): cannot find workspace root, ensure LSP is attached.")
+    print("npm.local_bin(): cannot find workspace root, ensure LSP is attached.")
   end
   return nil
 end
