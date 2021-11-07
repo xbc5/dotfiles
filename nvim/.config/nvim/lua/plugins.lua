@@ -113,7 +113,7 @@ return require('packer').startup({function(use)
     }
 
     use {
-      "glepnir/lspsaga.nvim",
+      "tami5/lspsaga.nvim",
       config = require("config.lspsaga"),
     }
 
