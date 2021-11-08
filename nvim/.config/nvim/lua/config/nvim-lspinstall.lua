@@ -1,6 +1,7 @@
 -- create an installable emmet server, you must manually install it after
 -- this must be available for the following functions, otherwise it cannot be configured/setup.
 require("config.emmet-ls").create()
+local table = require("lib.table")
 
 
 local M = {}
@@ -57,7 +58,11 @@ function M.config()
     lspi.setup()
     local servers = lspi.installed_servers()
     for _, server in pairs(servers) do
-      require('lspconfig')[server].setup(configs[server])
+      require('lspconfig')[server].setup(
+        table.merge(
+          configs[server],
+          { on_attach = require"config.aerial".on_attach } -- symbol browser side-window
+        ))
     end
   end
   setup_servers()

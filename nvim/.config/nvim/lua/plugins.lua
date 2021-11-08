@@ -76,6 +76,8 @@ return require('packer').startup({function(use)
       requires = {'nvim-treesitter'},
     }
 
+    use 'stevearc/aerial.nvim'
+
     use {
       "lukas-reineke/indent-blankline.nvim",
       config = require("config.indent-blanklines-nvim"),
@@ -84,7 +86,9 @@ return require('packer').startup({function(use)
     use {
       'kabouzeid/nvim-lspinstall',
       requires = { "neovim/nvim-lspconfig" },
-      config =  require("config.nvim-lspinstall").config,
+      config =  function()
+        require("config.nvim-lspinstall").config()
+      end
     }
 
     use {
