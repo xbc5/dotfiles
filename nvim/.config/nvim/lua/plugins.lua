@@ -50,6 +50,7 @@ return require('packer').startup({function(use)
     use "tpope/vim-surround"
     use {
       "windwp/nvim-autopairs",
+      disable = true,
       requires = { "nvim-treesitter/nvim-treesitter" },
       config = require("config.nvim-autopairs"),
     }
@@ -60,6 +61,7 @@ return require('packer').startup({function(use)
     ----------------------------------------------------------------------------
     use {
       'pwntester/octo.nvim',
+      disable = true,
       config = require("config.octo"),
       requires = {'nvim-telescope/telescope.nvim','kyazdani42/nvim-web-devicons'},
     }
@@ -68,11 +70,6 @@ return require('packer').startup({function(use)
     ----------------------------------------------------------------------------
     --                                IDE                                     --
     ----------------------------------------------------------------------------
-    use {
-      'micmine/jumpwire.nvim',
-      config = require('config.jumpwire'),
-    }
-
     use {
       'abecodes/tabout.nvim',
       config = require("config.tabout"),
@@ -128,7 +125,7 @@ return require('packer').startup({function(use)
       config = require("config.lsp_signature"),
     }
 
-    use { 
+    use {
       "rcarriga/nvim-dap-ui",
       requires = {"mfussenegger/nvim-dap", "Pocco81/DAPInstall.nvim"},
       config = function()
@@ -136,20 +133,6 @@ return require('packer').startup({function(use)
         require("config.dap-install")()
         require("config.nvim-dap-ui")()
       end,
-    }
-
-    use {
-      "rcarriga/vim-ultest",
-      requires = {"vim-test/vim-test"},
-      run = ":UpdateRemotePlugins",
-      config = require("config.vim-ultest"),
-      -- TODO: add pynvim precondition here
-      -- TODO: auto install and auto update pynvim
-    }
-
-    use {
-      "akinsho/nvim-toggleterm.lua",
-      config = require("config.nvim-toggleterm").config,
     }
 
     -- PlantUML
@@ -243,6 +226,7 @@ return require('packer').startup({function(use)
     }
     use {
       'mfussenegger/nvim-lint',
+      disable = true,
       config = require("config.nvim-lint"),
       run = function()
         npm.sync("eslint_d")
