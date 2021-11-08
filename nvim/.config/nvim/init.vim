@@ -14,9 +14,8 @@ augroup vimrc_help
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup END
 
-
 augroup AutoSave
-  autocmd CursorHold,CursorHoldI <buffer> silent write
+  autocmd CursorHold,CursorHoldI,FocusLost,BufLeave * silent! wall
 augroup END
 
 
