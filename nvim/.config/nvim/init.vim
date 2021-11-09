@@ -67,32 +67,6 @@ nnoremap <leader>? <cmd>Cheatsheet<cr>
 
 
 "  +-------------------------------------------------+
-"  |                    COMPLETION                   |
-"  +-------------------------------------------------+
-"
-" -- setup
-" remap <C-Space> from the default <C-@>
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
-" -- keys
-" tab to cycle
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-imap <silent> <C-Space> <Plug>(completion_trigger)
-" -- options
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-
-
-" -- nvim-compe
-inoremap <silent><expr> <C-Space> compe#complete()
-" inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-
-"  +-------------------------------------------------+
 "  |                     EDITOR                      |
 "  +-------------------------------------------------+
 "
