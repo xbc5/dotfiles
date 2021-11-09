@@ -29,6 +29,7 @@ function M.config()
       -- order of importance, outer table is to facilitate this
       {
         { name = 'nvim_lsp' },
+        { name = 'treesitter' },
         { name = 'vsnip' },
       },
       {
