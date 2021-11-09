@@ -120,33 +120,25 @@ return require('packer').startup({function(use)
     }
 
     use {
-      disable = true, -- DEPRECATED: use nvim-cmp
-      "hrsh7th/nvim-compe",
-      requires = { "hrsh7th/vim-vsnip", "rafamadriz/friendly-snippets" },
-      config = require("config.nvim-compe"),
-    }
-
-    use {
-      -- install this explicitly, because I might remove the plugin that
-      -- uses it (e.g. like compe, or cmp).
-      'hrsh7th/vim-vsnip', -- VSCode style snippets
-      requires = {
-        { "rafamadriz/friendly-snippets" }, -- has LOTS, this is why I use it.
-      }
-    }
-
-    use {
       'hrsh7th/nvim-cmp',
+      config = require("config.nvim-cmp").config,
       requires = {
-        { 'neovim/nvim-lspconfig' },
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'hrsh7th/cmp-buffer' },
         { 'hrsh7th/cmp-path' },
-        { 'hrsh7th/cmp-cmdline' },
-        { 'hrsh7th/cmp-vsnip' },
-        { 'hrsh7th/vim-vsnip' },
-      },
-      config = require("config.nvim-cmp").config
+        { 'ray-x/cmp-treesitter' },
+        {
+          'hrsh7th/cmp-vsnip', -- vsnip integration
+          after = 'nvim-cmp',
+          requires = {
+            'hrsh7th/vim-vsnip', -- no point in cmp-vsnip unless you have this
+            {
+              'rafamadriz/friendly-snippets', -- for good measure
+              after = 'cmp-vsnip'
+            }
+          }
+        }
+      }
     }
 
 
