@@ -71,6 +71,7 @@ return require('packer').startup({function(use)
     --                                IDE                                     --
     ----------------------------------------------------------------------------
     use {
+      disable = true, -- causes <Tab> => 0 bug
       'abecodes/tabout.nvim',
       config = require("config.tabout"),
       requires = {'nvim-treesitter'},
@@ -119,10 +120,35 @@ return require('packer').startup({function(use)
     }
 
     use {
+      disable = true, -- DEPRECATED: use nvim-cmp
       "hrsh7th/nvim-compe",
       requires = { "hrsh7th/vim-vsnip", "rafamadriz/friendly-snippets" },
       config = require("config.nvim-compe"),
     }
+
+    use {
+      -- install this explicitly, because I might remove the plugin that
+      -- uses it (e.g. like compe, or cmp).
+      'hrsh7th/vim-vsnip', -- VSCode style snippets
+      requires = {
+        { "rafamadriz/friendly-snippets" }, -- has LOTS, this is why I use it.
+      }
+    }
+
+    use {
+      'hrsh7th/nvim-cmp',
+      requires = {
+        { 'neovim/nvim-lspconfig' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-cmdline' },
+        { 'hrsh7th/cmp-vsnip' },
+        { 'hrsh7th/vim-vsnip' },
+      },
+      config = require("config.nvim-cmp").config
+    }
+
 
     use {
       "ray-x/lsp_signature.nvim",

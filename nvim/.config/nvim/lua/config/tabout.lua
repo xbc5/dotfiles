@@ -14,6 +14,8 @@ return function ()
     local function vsnipvisible() return vim.fn["vsnip#available"](1) ~= 0 end
     local function vsnipjumpable() return vim.fn["vsnip#jumpable"](-1) ~= 0 end
 
+    -- BUG: doing this returns 0 when tabbing.
+    -- disabling this pluging, I don't use it.
     function _G.tab_binding()
       if pumvisible() then
         return replace_keycodes("<C-n>")

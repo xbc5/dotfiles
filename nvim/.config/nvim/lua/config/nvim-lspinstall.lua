@@ -61,7 +61,10 @@ function M.config()
       require('lspconfig')[server].setup(
         table.merge(
           configs[server],
-          { on_attach = require"config.aerial".on_attach } -- symbol browser side-window
+          {
+            on_attach = require"config.aerial".on_attach, -- symbol browser side-window
+            capabilities = require'config.nvim-cmp'.lsp_config(), -- nvim-cmp uses lsp
+          }
         ))
     end
   end
