@@ -7,7 +7,7 @@ function M.on_attach(client)
   vim.api.nvim_buf_set_keymap(0, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
 
   vim.g.aerial = {
-    open_automatic = true,
+    open_automatic = false,
   }
 end
 
