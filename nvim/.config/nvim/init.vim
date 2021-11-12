@@ -114,33 +114,6 @@ noremap <leader>ji :lua require('jumpwire').jump('implementation')<CR>
 noremap <leader>jm :lua require('jumpwire').jump('markup')<CR>
 noremap <leader>js :lua require('jumpwire').jump('style')<CR>
 
-"  +-------------------------------------------------+
-"  |                        LSP                      |
-"  +-------------------------------------------------+
-"
-" -- lspsaga
-nnoremap <silent><leader>lf <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-nnoremap <silent><leader>lca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-nnoremap <silent><leader>lr <cmd>lua require('lspsaga.rename').rename()<CR>
-" visual mode == range
-vnoremap <silent><leader>lca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-" scroll in previews
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-" previews
-nnoremap <silent><leader>ls <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-nnoremap <silent><leader>lpd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-nnoremap <silent><leader>ld <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-" diagnostics
-nnoremap <silent><leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
-nnoremap <silent><leader>cc <cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>
-nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
-nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
-" terminal
-tnoremap <silent> <Esc><Esc> <cmd>lua require('lspsaga.floaterm').close_float_terminal()<CR>
-" jumps
-" nnoremap <silent> <leader>ljd <cmd>lua vim.lsp.buf.definition()<CR>
-
 
 "  +-------------------------------------------------+
 "  |                      PACKER                     |
