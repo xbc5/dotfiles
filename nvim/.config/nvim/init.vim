@@ -89,7 +89,6 @@ vnoremap <silent> m :lua require('tsht').nodes()<CR>
 "  +-------------------------------------------------+
 "
 nnoremap <leader>gd <cmd>Gitsigns diffthis<cr>
-nnoremap <silent> <leader>gg <cmd>lua require('lspsaga.floaterm').open_float_terminal("lazygit")<CR>
 
 
 "  +-------------------------------------------------+

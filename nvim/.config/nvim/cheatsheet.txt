@@ -30,6 +30,12 @@ Reformat entire (long) line                                 | gqq
 Implicitly marked boundaries for yanked/pasted text         | [ ]
 Implicitly marked boundaries for visual selection           | < >
 
+## mode-tips
+Back to normal mode                                         | <C-\><C-n>
+
+## terminal
+To scroll in FTerm, go into normal mode first               | <C-\><C-n>
+
 ## lsp @jumps @lsp-saga
 Select references from a tooltip, and optionally jump       | <leader>lr
 
@@ -78,3 +84,6 @@ Surround with tag: <p>foo</foo>                             | ysiw<p>
 Change from one bracket to another                          | cs[{
 Wrap the entire line with parens                            | yssb | yss(
 Revert to original text                                     | ds{ds]
+
+## help
+View key expressions used for maps                          | :h key-notation

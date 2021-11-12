@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
   require'lspsaga'.setup {
-    debug = true,
+    debug = false,
   }
 
   local map = vim.api.nvim_set_keymap

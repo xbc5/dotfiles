@@ -43,6 +43,11 @@ return require('packer').startup({function(use)
     -- use 'nvim-lua/completion-nvim'
     use 'b3nj5m1n/kommentary'
     -- use 'takac/vim-hardtime'
+    --
+    use {
+      'numtostr/FTerm.nvim',
+      config = require'config.fterm-nvim'.config
+    }
 
     ----------------------------------------------------------------------------
     --                               EDITOR                                   --
