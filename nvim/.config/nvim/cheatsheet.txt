@@ -30,8 +30,12 @@ Reformat entire (long) line                                 | gqq
 Implicitly marked boundaries for yanked/pasted text         | [ ]
 Implicitly marked boundaries for visual selection           | < >
 
-## mode-tips
+## vim
 Back to normal mode                                         | <C-\><C-n>
+The help menu for internal-variables like g:, v:, and b:    | :h internal-variables
+
+## nvim 
+The help menu for the global API                            | :h api-global
 
 ## terminal
 To scroll in FTerm, go into normal mode first               | <C-\><C-n>
