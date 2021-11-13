@@ -49,6 +49,11 @@ return require('packer').startup({function(use)
       config = require'config.fterm-nvim'.config
     }
 
+    use {
+      'kevinhwang91/rnvimr',
+      config = require'config.rnvimr'.config,
+    }
+
     ----------------------------------------------------------------------------
     --                               EDITOR                                   --
     ----------------------------------------------------------------------------
