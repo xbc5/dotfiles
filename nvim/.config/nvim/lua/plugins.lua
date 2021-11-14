@@ -176,11 +176,6 @@ return require('packer').startup({function(use)
     --                            LOOK & FEEL                                 --
     ----------------------------------------------------------------------------
     use {
-      "sunjon/Shade.nvim",
-      config = require("config.shade"),
-    }
-
-    use {
       "p00f/nvim-ts-rainbow",
       config = require("config.nvim-ts-rainbow"),
       requires ={ "nvim-treesitter/nvim-treesitter" }
