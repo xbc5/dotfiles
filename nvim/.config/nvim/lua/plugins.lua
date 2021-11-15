@@ -95,11 +95,9 @@ return require('packer').startup({function(use)
     }
 
     use {
-      'kabouzeid/nvim-lspinstall',
+      'williamboman/nvim-lsp-installer',
       requires = { "neovim/nvim-lspconfig" },
-      config =  function()
-        require("config.nvim-lspinstall").config()
-      end
+      config = require'config.nvim-lsp-installer'.config,
     }
 
     use {

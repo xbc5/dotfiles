@@ -1,6 +1,10 @@
 local M = {}
 
+function M.config()
+  return {}
+end
 
+-- TODO: port this to nvim-lsp-installer custom server (which is supported)
 function M.create()
   require('lspinstall/servers').emmet = {
     install_script = [[
@@ -15,10 +19,8 @@ function M.create()
   }
 end
 
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.config = { capabilities = capabilities; }
-
+-- M.config = { capabilities = capabilities; }
 
 return M
