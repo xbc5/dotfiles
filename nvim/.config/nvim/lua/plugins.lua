@@ -54,6 +54,11 @@ return require('packer').startup({function(use)
       config = require'config.rnvimr'.config,
     }
 
+    use {
+      'chentau/marks.nvim',
+      config = require'config.marks-nvim'.config,
+    }
+
     ----------------------------------------------------------------------------
     --                               EDITOR                                   --
     ----------------------------------------------------------------------------
