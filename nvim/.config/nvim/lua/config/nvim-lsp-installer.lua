@@ -29,6 +29,9 @@ function M.config()
   local lsp_installer = require("nvim-lsp-installer")
 
   vim.cmd('command! LspInstallPreferred lua require("config.nvim-lsp-installer").install()')
+  vim.cmd('command! LspReload LspRestart | edit)') -- reload LSP then buffer
+
+  vim.lsp.set_log_level('warn')
 
   lsp_installer.settings{
     log_level = vim.log.levels.INFO,

@@ -1,8 +1,7 @@
-" it's probably best practice to load the theme first, since other
-"  modules will depend on it (e.g. vim.g.colors_value prop), but it doesn't
-"  seem to affect lualine.
-lua require("config.theme")("material", "deep ocean")
-lua require("plugins")
+lua << EOF
+require("config.theme")("material", "deep ocean")
+require("plugins") -- base uses things loaded by plugins
+EOF
 
 
 nnoremap <SPACE> <Nop>
