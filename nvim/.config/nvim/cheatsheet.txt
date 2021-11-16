@@ -91,3 +91,6 @@ Revert to original text                                     | ds{ds]
 
 ## help
 View key expressions used for maps                          | :h key-notation
+
+## execute
+Execute <Plug> without key map                              | :execute "normal \<Plug>Foo"
