@@ -11,13 +11,13 @@ function M.shell_cmd(cmd, PIPE)
   local f = io.popen(cmd..pipe)
   local s = f:read('*l')
   f:close()
-  
+ 
   return s
 end
 
 
 function M.cmd_exists(cmd)
-  return M.shell_cmd("which "..cmd, "NOERR") ~= ''
+  return M.shell_cmd("which "..cmd, "NOERR") ~= nil
 end
 
 

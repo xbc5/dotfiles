@@ -38,12 +38,22 @@ return require('packer').startup({function(use)
     -- startup(spec), 'spec' can be: fn, table+conf_table; fn+conf_table.
     -- You can alternatively use init() to set fine grained options.
     -- See docs if you want to set packer configuration options.
- 
+
     use 'wbthomason/packer.nvim' -- manage packer updates
-    -- use 'nvim-lua/completion-nvim'
+
     use 'b3nj5m1n/kommentary'
     -- use 'takac/vim-hardtime'
-    --
+
+    use {
+      "NTBBloodbath/rest.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        local conf = require'config.rest-nvim'
+        conf.preconditions()
+        conf.config()
+      end,
+    }
+
     use {
       'numtostr/FTerm.nvim',
       config = require'config.fterm-nvim'.config
@@ -69,7 +79,6 @@ return require('packer').startup({function(use)
       requires = { "nvim-treesitter/nvim-treesitter" },
       config = require("config.nvim-autopairs"),
     }
-
 
     ----------------------------------------------------------------------------
     --                                GIT                                     --

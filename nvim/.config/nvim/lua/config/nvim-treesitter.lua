@@ -4,7 +4,8 @@ return function()
       -- can be a string with: 'all', 'maintained', or a list
       -- available parsers that interest you: bash lua bibtex c cmake css dockerfile html jsonc (i.e. with comments)
       -- latex regex rust python svelte toml typescript vue yaml scss rst graphql go gomod cpp
-      "bash", "lua", "css", "dockerfile", "html", "javascript", "jsonc", "regex",
+      -- NOTE: ensure json and html deps are installed for rest-nvim
+      "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex",
       "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst",
     },
     ignore_install = { }, -- ignore these parsers
