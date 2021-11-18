@@ -38,6 +38,7 @@ return require('packer').startup({function(use)
     -- startup(spec), 'spec' can be: fn, table+conf_table; fn+conf_table.
     -- You can alternatively use init() to set fine grained options.
     -- See docs if you want to set packer configuration options.
+    use { "nvim-lua/plenary.nvim" } -- packer opt is buggy, make this mandatory
 
     use 'wbthomason/packer.nvim' -- manage packer updates
 
