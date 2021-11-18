@@ -8,7 +8,7 @@ function M.install()
 
   local servers = {
     "gopls", "yamlls", "cssls", "tailwindcss", "tsserver", "svelte", "sumneko_lua", "cmake", "dockerls",
-    "emmet_ls", "terraformls", "html", "vimls", "pyright", "bashls", "jsonls", "rust_analyzer", "eslint"
+    "emmet_ls", "terraformls", "html", "vimls", "pyright", "bashls", "jsonls", "rust_analyzer", -- "eslint" -- broken, so broken
   }
 
   for _, server in pairs(servers) do
@@ -34,13 +34,17 @@ function M.config()
   vim.lsp.set_log_level('warn')
 
   lsp_installer.settings{
-    log_level = vim.log.levels.INFO,
+    log_level = vim.log.levels.WARN,
   }
 
   lsp_installer.on_server_ready(function(server)
-      local nvim = require("lib.nvim")
-      local opts = {}
+      local nvim = require'lib.nvim'
+      local table = require'lib.table'
+
       local name = server.name -- the EXACT LSP server name
+      local opts = { -- default opts, merged with server configs
+        flags = { debounce_text_changes = 500 } -- debounce didChange notification to server (ms)
+      }
 
       -- the server config might not exists
       local path = 'config.lsp_servers.'..name
@@ -49,7 +53,7 @@ function M.config()
         if not conf.config then
           print("nvim-lsp-installer: error loading config() for the LSP server config: "..path)
         else
-          opts = conf.config()
+          opts = table.merge(opts, conf.config())
         end
       end
       -- NOTE: you can do lsp server setup() here too if there's a need for it.
