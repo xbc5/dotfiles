@@ -2,6 +2,13 @@
 Toggle case (whole line)                                    | g~~
 Repeat a replace/substitute command for the entire buffer   | g&
 
+## profile @performance @benchmark
+Profile ALL functions and script files                      | :profile start output.log | profile file * | profile func *
+Pause profiling                                             | :profile pause
+Stop profiling                                              | :profile stop
+Profile startup time                                        | nvim --startuptime output.log
+
+
 ## text-objects-commands
 Find up to and including {c}                                | f{c}
 Reverse find up to and including {c}                        | F{c}
