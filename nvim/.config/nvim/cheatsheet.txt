@@ -101,3 +101,9 @@ View key expressions used for maps                          | :h key-notation
 
 ## execute
 Execute <Plug> without key map                              | :execute "normal \<Plug>Foo"
+
+## window @display
+Rotate windows (right)                                      | <C-w> r
+Rotate windows (left)                                       | <C-w> R
+Swap winow with next (or prev)                              | <C-w> x
+The window moving help file                                 | :h window-moving
