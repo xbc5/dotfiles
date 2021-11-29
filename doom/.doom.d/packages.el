@@ -57,11 +57,13 @@
 
 (package! rg)
 
-(package! org-roam-bibtex)
-(package! bibtex-completion) ; required by org-roam-bibtex
-(package! ivy-bibtex)
-(package! org-ref)
 (package! org-roam-server :disable t) ; not yet supported for roam v2
+
+;; org-ref
+(package! org-ref)
+(package! bibtex-completion) ; required by helm|ivy-bibtex
+(package! helm-bibtex)
+(package! org-roam-bibtex)
 
 (package! bug-hunter)
 

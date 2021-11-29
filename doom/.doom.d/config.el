@@ -160,50 +160,6 @@ If REC is non-nil then do recursive search."
 (setq dash-docs-docsets-path "~/doc/docsets"
       dash-docs-browser-func 'eww)
 
-
-;; ######################################################################
-;; ############################# ORG-REF ################################
-;; ######################################################################
-;;
-(defun dnd-unescape-uri () nil)
-;; config options -- set these, these are used for all org-ref configuration.
-(setq my/bib-file "~/org/bib/refs.bib"
-      my/bib-pdfs "~/org/bib/pdfs"
-      my/bib-notes-dir "~/org/bib/notes"
-      my/bib-notes-file "~/org/bib/notes.org" ; FIXME: I am not entirely sure what this does
-)
-;;
-;; built-in packages
-(setq reftex-default-bibliography my/bib-file
-      bibtex-completion-bibliography my/bib-file
-      bibtex-completion-library-path my/bib-pdfs
-      bibtex-completion-notes-path my/bib-notes-dir
-      bibtex-completion-pdf-open-function (lambda (fpath)
-                                            (start-process "open" "*open*" "open" fpath))
-)
-;;
-;; configure org-ref
-(use-package! org-ref
-              :config
-              (setq org-ref-notes-directory my/bib-notes-dir
-                    org-ref-bibliography-notes my/bib-notes-file
-                    org-ref-default-bibliography (list my/bib-file)
-                    org-ref-pdf-directory my/bib-pdfs
-                    ;;org-ref-completion-library 'org-ref-ivy-cite ;; BUG this breaks links, use helm instead
-              )
-)
-
-;;
-;; ivy-bibtex
-;;   - ivy-bibtex requires ivy's `ivy--regex-ignore-order` regex builder, which
-;;     ignores the order of regexp tokens when searching for matching candidates.
-(after! ivy-bibtex
-  (setq ivy-re-builders-alist
-        '((ivy-bibtex . ivy--regex-ignore-order)
-          (t . ivy--regex-plus)))
-)
-
-
 ;; ######################################################################
 ;; ########################### BEACON-MODE ##############################
 ;; ######################################################################
@@ -267,4 +223,5 @@ If REC is non-nil then do recursive search."
 (load! "org-roam-server.el")
 (load! "org-roam.el")
 (load! "org-roam-bibtex.el")
+(load! "org-ref.el")
 (load! "emacs.el")
