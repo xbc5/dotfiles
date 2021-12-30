@@ -1,3 +1,6 @@
+## display @message
+Re-display last command output                              | g<
+
 ## text-manipulation
 Toggle case (whole line)                                    | g~~
 Repeat a replace/substitute command for the entire buffer   | g&
@@ -31,6 +34,7 @@ Toggle capitalisation of word                               | g~iw
 Uncapitalise whole line                                     | guu
 Capitalise paragraph                                        | gUip
 Reformat entire (long) line                                 | gqq
+Uppercase contents of braces                                | gUi{
 
 
 ## marks @boundaries @boundary
