@@ -69,8 +69,12 @@ FUZZY_OPEN_TARGETS+="${conf}/Code/User:X;"
 FUZZY_OPEN_TARGETS+="${conf}/xfce4/terminal:X"
 export FUZZY_OPEN_TARGETS
 
-# Qubes split-ssh
-socat UNIX-LISTEN:$SSH_AUTH_SOCK,unlink-early,reuseaddr,fork EXEC:"qrexec-client-vm @dispvm qubes.SshAgent+dev" &
+# Qubes split-ssh: listen on the ssh socket, then send it to ssh VM
+# if ! [[ -e "$SSH_AUTH_SOCK" ]]; then
+#   socat \
+#     UNIX-LISTEN:$SSH_AUTH_SOCK,unlink-early,reuseaddr,fork \
+#     EXEC:"qrexec-client-vm @dispvm qubes.SshAgent+dev" & # via dispvm, and through specified policy
+# fi
 
 # THEMES
 zinit ice depth=1
@@ -87,8 +91,8 @@ zinit ice lucid wait
 zinit snippet OMZ::plugins/gitignore/gitignore.plugin.zsh
 # ssh-agent
 # using split-ssh (via socat) instead
-#zinit ice lucid wait
-#zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 # tmux
 zinit ice lucid wait
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
