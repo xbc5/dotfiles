@@ -20,7 +20,7 @@ function M.config()
         c = cmp.mapping.close(),
       }),
       ['<CR>'] = cmp.mapping.confirm({
-        select = true, -- when <CR>, auto select first if none selected
+        select = false, -- autoselect the first item
         behavior = cmp.ConfirmBehavior.Replace,
       }),
     },
@@ -35,8 +35,12 @@ function M.config()
       {
         { name = 'buffer' },
       }
-    )
+    ),
 
+    -- uncomment to disable autocomplete (setting to true doesn't work because it's a table)
+    --[[ completion = {
+      autocomplete = false,
+    } ]]
   })
 
   vim.o.completeopt = "menu,menuone,noselect,noinsert"

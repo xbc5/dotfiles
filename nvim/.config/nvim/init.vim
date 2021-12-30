@@ -30,6 +30,8 @@ map <Delete> <Nop>
 map <PageUp> <Nop>
 map <PageDown> <Nop>
 
+" don't highlight matching paren: possible performance issues
+let loaded_matchparen = 1
 
 "  +-------------------------------------------------+
 "  |                    BUILT IN                     |
