@@ -42,6 +42,8 @@ return require('packer').startup({function(use)
 
     use 'wbthomason/packer.nvim' -- manage packer updates
 
+    use 'vim-scripts/loremipsum'
+
     use 'b3nj5m1n/kommentary'
     -- use 'takac/vim-hardtime'
 
