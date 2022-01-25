@@ -6,33 +6,20 @@ return function(colorscheme, style)
     vim.g.material_style = style or "deep ocean"
 
     require('material').setup({
-      contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
-      borders = true, -- Enable borders between verticaly split windows
+      contrast = { -- contrast the following elements
+        sidebars = true,
+        floating_windows = true,
+        line_numbers = true,
+        sign_column = true,
+        cursor_line = true,
+        non_current_windows = true,
+        popup_menu = true,
+      },
 
       italics = {
-        comments = true, -- Enable italic comments
-        keywords = true, -- Enable italic keywords
-        functions = false, -- Enable italic functions
-        strings = false, -- Enable italic strings
-        variables = false -- Enable italic variables
+        comments = true,
+        keywords = true,
       },
-
-      contrast_windows = { -- Specify which windows get the contrasted (darker) background
-        "terminal", -- Darker terminal background
-        "packer", -- Darker packer background
-        "qf" -- Darker qf list background
-      },
-
-      text_contrast = {
-        lighter = false, -- Enable higher contrast text for lighter style
-        darker = false -- Enable higher contrast text for darker style
-      },
-
-      disable = {
-        background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
-        term_colors = false, -- Prevent the theme from setting terminal colors
-        eob_lines = false -- Hide the end-of-buffer lines
-      }
     })
 
     vim.cmd("colorscheme material")
