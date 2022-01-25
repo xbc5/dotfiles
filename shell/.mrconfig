@@ -21,5 +21,5 @@ post_update = cargo install --force --path .
 pre_update = [[ `git branch --show-current` == "develop"  ]] || git checkout develop
 checkout = git clone --depth 1 'https://github.com/hlissner/doom-emacs' '.emacs.d'
 post_checkout = sh ./.emacs.d/bin/doom install
-update = sh ./bin/doom --yes upgrade
+update = sh ./bin/doom --yes upgrade && ./bin/doom --yes build
 
