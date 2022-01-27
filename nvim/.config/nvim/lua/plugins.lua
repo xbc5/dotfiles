@@ -110,6 +110,8 @@ return require('packer').startup({function(use)
       config = require'config.nvim-lsp-installer'.config,
     }
 
+    use 'j-hui/fidget.nvim'
+
     use {
       "mfussenegger/nvim-ts-hint-textobject",
       requires = { "nvim-treesitter/nvim-treesitter" },
