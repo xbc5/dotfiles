@@ -1,5 +1,6 @@
 local sys = require("lib.sys")
-local npm = require("lib.npm")
+-- FIXME: this uses plenary, and causes panic on new profile init becuase it doesn't exist
+-- local npm = require("lib.npm")
 
 -- don't run any installations as root or in Qubes templates
 -- NOTE: make sure that this is the root of all of your plugin configuration, because
@@ -28,7 +29,7 @@ end
 auto_install_packer()
 
 return require('packer').startup({function(use)
-    use { "nvim-lua/plenary.nvim" } -- packer opt is buggy, make this mandatory
+    use "nvim-lua/plenary.nvim" -- packer opt is buggy, make this mandatory
     use 'wbthomason/packer.nvim' -- manage packer updates
     use 'vim-scripts/loremipsum'
     use 'b3nj5m1n/kommentary'
@@ -55,7 +56,6 @@ return require('packer').startup({function(use)
     use {
       'williamboman/nvim-lsp-installer',
       requires = { "neovim/nvim-lspconfig" },
-      config = require'config.nvim-lsp-installer'.config,
     }
 
 
@@ -198,8 +198,9 @@ return require('packer').startup({function(use)
       'mhartington/formatter.nvim',
       config = require("config.formatter"),
       run = function()
-        npm.sync("prettier")
-        npm.sync("@fsouza/prettierd")
+        -- FIXME: conditionally check if npm exists, it might not
+        --npm.sync("prettier")
+        --npm.sync("@fsouza/prettierd")
       end,
     }
 
@@ -208,8 +209,9 @@ return require('packer').startup({function(use)
       disable = true,
       config = require("config.nvim-lint"),
       run = function()
-        npm.sync("eslint_d")
-        npm.sync("@typescript-eslint/eslint-plugin")
+        -- FIXME: conditionally check if npm exists, it might not
+        --npm.sync("eslint_d")
+        --npm.sync("@typescript-eslint/eslint-plugin")
       end,
     }
   end,

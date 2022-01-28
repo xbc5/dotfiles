@@ -1,5 +1,7 @@
 lua << EOF
+-- FIXME: check theme exists first, make sure it doesn't throw
 require("config.theme")("material", "deep ocean")
+require'config.nvim-lsp-installer'.config()
 require("plugins") -- base uses things loaded by plugins
 EOF
 
