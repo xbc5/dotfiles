@@ -115,6 +115,7 @@ return require('packer').startup({function(use)
 
     use {
       "p00f/nvim-ts-rainbow",
+      disable = true,
       config = require("config.nvim-ts-rainbow"),
       requires ={ "nvim-treesitter/nvim-treesitter" }
     }
