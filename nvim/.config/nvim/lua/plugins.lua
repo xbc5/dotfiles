@@ -114,36 +114,8 @@ return require('packer').startup({function(use)
     }
 
     use {
-      "p00f/nvim-ts-rainbow",
-      disable = true,
-      config = require("config.nvim-ts-rainbow"),
-      requires ={ "nvim-treesitter/nvim-treesitter" }
-    }
-
-    use {
       "norcalli/nvim-colorizer.lua",
       config = require("config.nvim-colorizer"),
-    }
-
-    use {
-      'lifer0se/ezbookmarks.nvim',
-      after = 'telescope.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-lua/popup.nvim',
-        'nvim-telescope/telescope.nvim',
-      },
-      config = function()
-        require('ezbookmarks').setup{
-          cwd_on_open = 0,        -- change directory when opening a bookmark
-          use_bookmark_dir = 0,   -- if a bookmark is part of a bookmarked directory, cd to that direcrtory (works independently of cwd_on_open)
-          open_new_tab = 0,       -- open bookmark in a new tab.
-        }
-        local opts = { silent = true }
-        vim.api.nvim_set_keymap('n', '<leader>,', ':lua require"ezbookmarks".AddBookmark()<CR>', opts)
-        vim.api.nvim_set_keymap('n', '<leader>,,', ':lua require"ezbookmarks".RemoveBookmark()<CR>', opts)
-        vim.api.nvim_set_keymap('n', '<leader>j', ':lua require"ezbookmarks".OpenBookmark()<CR>', opts)
-      end
     }
 
     use {
