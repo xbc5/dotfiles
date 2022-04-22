@@ -239,17 +239,41 @@ alias status="sudo systemctl status";
 alias show="sudo systemctl | grep -i";
 # pyenv
 alias pc="pyenv virtualenv";
-alias pr="pyenv virtualenv-delete";
 alias pl="pyenv virtualenvs";
 alias ph="pyenv help";
 alias pv="pyenv versions";
 alias pa="pyenv activate";
 alias pd="pyenv deactivate";
+
+alias p="pnpm";
+alias pr="pnpm run";
+alias pt="reset && pnpm run test --";
+alias pad="pnpm add --save-dev";
+alias pa="pnpm add";
+alias y="\yarn";
+alias yarn="echo 'no; use y or p'";
+
+alias gil="gh issue list -L 1000";
+alias gill="gh issue list -L 1000 -l";
+alias gicr="gh issue create";
+alias gico="gh issue comment --editor"
+alias gicl="gh issue close"
+alias gie="gh issue edit";
+alias gn="gh notify";
+alias grf="gh repo fork --clone --remote"
+alias giv="gh issue view --comments"
+
 # zsh
 alias zlerc="$EDITOR ${HOME}/.zsh/zle.zsh && reload"
 alias reload="source ${HOME}/.zshrc && echo reload: zshrc reloaded";
 alias zshrc="$EDITOR ${HOME}/.zshrc && reload"
 alias vim="echo nope."
+
+function sa() {
+  local key="`ls ${HOME}/.ssh/*.priv | fzf`"
+  [[ key == "" ]] && return
+  ssh-add "${key}"
+}
 
 # pyenv - add a number of paths, also this modified PATH,
 #  so needs to be at the end of this file
