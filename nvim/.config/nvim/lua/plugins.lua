@@ -38,6 +38,24 @@ return require('packer').startup({function(use)
     use 'marko-cerovac/material.nvim'
 
     use {
+      'mfussenegger/nvim-dap',
+      config = require'config.dap'.config
+    }
+
+    use {
+      'theHamsta/nvim-dap-virtual-text',
+      config = function()
+        require('nvim-dap-virtual-text').setup()
+      end
+    }
+
+    use {
+      "rcarriga/nvim-dap-ui",
+      requires = {"mfussenegger/nvim-dap"},
+      config = require'config.dapui'.config
+    }
+
+    use {
       'numtostr/FTerm.nvim',
       config = require'config.fterm-nvim'.config
     }
@@ -51,7 +69,6 @@ return require('packer').startup({function(use)
       'chentau/marks.nvim',
       config = require'config.marks-nvim'.config,
     }
-
 
     use {
       'williamboman/nvim-lsp-installer',
