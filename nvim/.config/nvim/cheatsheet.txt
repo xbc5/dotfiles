@@ -78,6 +78,9 @@ Join lines without spaces                                   | gJ
 ## files
 Navigate to selected file name (relative of absolute)       | gf
 
+## highlight
+Show all highlight groups in use                            | :so $VIMRUNTIME/syntax/hitest.vim
+
 ## visual-mode
 Rehighlight last selected                                   | gv
 

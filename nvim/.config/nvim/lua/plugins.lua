@@ -36,6 +36,7 @@ return require('packer').startup({function(use)
     use "tpope/vim-surround"
     use 'j-hui/fidget.nvim'
     use 'marko-cerovac/material.nvim'
+    use 'lewis6991/nvim-treesitter-context'
 
     use {
       'mfussenegger/nvim-dap',

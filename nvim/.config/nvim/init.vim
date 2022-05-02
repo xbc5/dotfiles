@@ -5,6 +5,8 @@ require'config.nvim-lsp-installer'.config()
 require("plugins") -- base uses things loaded by plugins
 EOF
 
+" nvim-treesitter-context: display scope declaration at top of screen
+highlight! TreesitterContext guibg=Black
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
