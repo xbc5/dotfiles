@@ -8,12 +8,11 @@ EOF
 " nvim-treesitter-context: display scope declaration at top of screen
 highlight! TreesitterContext guibg=Black
 
-set listchars=tab:→\ ,space:·,nbsp:␣,eol:¶,precedes:«,extends:»
-set list
-
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
+set listchars=tab:→\ ,space:·,nbsp:␣,eol:¶,precedes:«,extends:»
+nnoremap <silent> <leader>sl :set list!<CR>
 
 augroup vimrc_help
   autocmd!
