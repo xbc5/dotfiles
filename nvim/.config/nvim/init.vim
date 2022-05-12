@@ -14,6 +14,9 @@ let mapleader = " "
 set listchars=tab:→\ ,space:·,nbsp:␣,eol:¶,precedes:«,extends:»
 nnoremap <silent> <leader>sl :set list!<CR>
 
+nnoremap <silent> <leader>ss :set spell!<CR>
+nnoremap <silent> <leader>sw :set wrap!<CR>
+
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
