@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -79,10 +72,6 @@ export FUZZY_OPEN_TARGETS
 #     UNIX-LISTEN:$SSH_AUTH_SOCK,unlink-early,reuseaddr,fork \
 #     EXEC:"qrexec-client-vm @dispvm qubes.SshAgent+dev" & # via dispvm, and through specified policy
 # fi
-
-# THEMES
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
 
 # PLUG-INS
 # git
@@ -280,10 +269,8 @@ typeset -aU fpath
 
 zinit cdreplay -q
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# overrides
-# These are here because the `p10k configure` command will overwrite its config
-# Use these last to ensure that p10k is loaded, and these options are used
-
-# vi 'command mode' indicator
-#typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION=':'
+if [[ -z "`command -v starship`" ]]; then
+  echo "You must install starship manually: gh install starship/starship"
+else
+  eval "$(starship init zsh)"
+fi
