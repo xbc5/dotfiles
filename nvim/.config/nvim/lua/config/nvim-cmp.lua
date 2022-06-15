@@ -2,48 +2,103 @@ local M = {}
 
 function M.config()
   local cmp = require('cmp')
+  local ls = require('luasnip')
+  local nvim = require('lib.nvim')
+
+  local function exitInsert() vim.cmd('stopinsert') end
 
   cmp.setup({
     snippet = {
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+        if not ls then return end
+        ls.lsp_expand(args.body)
       end,
     },
 
     mapping = {
       ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      ['<CR>'] = cmp.mapping.confirm({
-        select = false, -- autoselect the first item
-        behavior = cmp.ConfirmBehavior.Replace,
-      }),
+
+      ['<M-Space>'] = cmp.mapping(function()
+        if cmp.visible() then
+          cmp.confirm({
+            select = true,
+            behavior = cmp.ConfirmBehavior.Replace,
+          })
+        else
+          cmp.complete()
+        end
+      end, { 'i', 'c', 's' }),
+
+      ['<M-h>'] = cmp.mapping(function(fallback)
+        if ls.jumpable(-1) then
+          ls.jump(-1)
+        elseif nvim.is_mode('i') then
+          exitInsert()
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+
+      ['<M-l>'] = cmp.mapping(function(fallback)
+        if ls.jumpable(1) then
+          ls.jump(1)
+        elseif nvim.is_mode('i') then
+          exitInsert()
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+
+      ['<M-j>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif nvim.is_mode('i') then
+          exitInsert()
+        else
+          fallback()
+        end
+      end, { 'i', 's' }), -- map it for input and select modes
+
+      ['<M-k>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif nvim.is_mode('i') then
+          exitInsert()
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+
+    },
+
+    formatting = {
+      format = require('lspkind').cmp_format({
+        mode = 'symbol_text',
+      })
     },
 
     sources = cmp.config.sources(
       -- order of importance, outer table is to facilitate this
       {
+        { name = 'luasnip' },
         { name = 'nvim_lsp' },
-        { name = 'treesitter' },
-        { name = 'vsnip' },
       },
       {
-        { name = 'buffer' },
+        { name = 'path' },
+        { name = 'buffer', keyword_length = 5 },
       }
     ),
 
-    -- uncomment to disable autocomplete (setting to true doesn't work because it's a table)
-    --[[ completion = {
-      autocomplete = false,
-    } ]]
+    completion = {
+      completeopt = "menuone,preview,noselect,noinsert"
+    }
   })
-
-  vim.o.completeopt = "menu,menuone,noselect,noinsert"
 end
 
 function M.lsp_config()

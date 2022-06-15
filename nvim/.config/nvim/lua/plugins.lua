@@ -39,6 +39,12 @@ return require('packer').startup({function(use)
     use 'lewis6991/nvim-treesitter-context'
 
     use {
+      'nvim-treesitter/playground',
+      requires = 'nvim-treesitter/nvim-treesitter',
+      cmd = "TSPlaygroundToggle",
+    }
+
+    use {
       'mfussenegger/nvim-dap',
       config = require'config.dap'.config
     }
@@ -92,6 +98,7 @@ return require('packer').startup({function(use)
     use {
       'nvim-treesitter/nvim-treesitter',
       config = require("config.nvim-treesitter"),
+      commit = '44d2898',
     }
 
     use {
@@ -102,23 +109,27 @@ return require('packer').startup({function(use)
     use {
       'hrsh7th/nvim-cmp',
       config = require("config.nvim-cmp").config,
+      requires = 'onsails/lspkind.nvim',  -- this is setup within nvim-cmp config
+    }
+    use {
+      'hrsh7th/cmp-nvim-lsp',
+      requires = 'hrsh7th/nvim-cmp',
+    }
+    use {
+      'hrsh7th/cmp-buffer',
+      requires = 'hrsh7th/nvim-cmp',
+    }
+    use {
+      'hrsh7th/cmp-path',
+      requires = 'hrsh7th/nvim-cmp',
+    }
+    use {
+      'saadparwaiz1/cmp_luasnip',
       requires = {
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-path' },
-        { 'ray-x/cmp-treesitter' },
-        {
-          'hrsh7th/cmp-vsnip', -- vsnip integration
-          after = 'nvim-cmp',
-          requires = {
-            'hrsh7th/vim-vsnip', -- no point in cmp-vsnip unless you have this
-            {
-              'rafamadriz/friendly-snippets', -- for good measure
-              after = 'cmp-vsnip'
-            }
-          }
-        }
-      }
+        { "L3MON4D3/LuaSnip",
+          config = require('config.luasnip').config },
+        'hrsh7th/nvim-cmp',
+      },
     }
 
     use {

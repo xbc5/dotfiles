@@ -3,6 +3,7 @@ return function(colorscheme, style)
 
   local function set_material()
     -- styles: darker; lighter; oceanic; palenight; deep ocean;
+    vim.api.nvim_set_option('termguicolors', true) -- required for 16 bit terminals
     vim.g.material_style = style or "deep ocean"
 
     require('material').setup({

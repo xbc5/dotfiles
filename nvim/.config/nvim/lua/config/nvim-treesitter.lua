@@ -6,7 +6,7 @@ return function()
       -- latex regex rust python svelte toml typescript vue yaml scss rst graphql go gomod cpp
       -- NOTE: ensure json and html deps are installed for rest-nvim
       "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex",
-      "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst",
+      "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query"
     },
     ignore_install = { }, -- ignore these parsers
 

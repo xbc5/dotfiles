@@ -43,10 +43,13 @@ Implicitly marked boundaries for visual selection           | < >
 
 ## vim
 Back to normal mode                                         | <C-\><C-n>
-The help menu for internal-variables like g:, v:, and b:    | :h internal-variables
 
-## nvim 
-The help menu for the global API                            | :h api-global
+## help @bindings 
+View internal-variables like g:, v:, and b:                 | :h internal-variables
+View the global API                                         | :h api-global
+View the Lua Vim API                                        | :h lua-vim
+View built-in insert mode completion                        | :h ins-completion
+View key mapping notation                                   | :h key-notation
 
 ## terminal
 To scroll in FTerm, go into normal mode first               | <C-\><C-n>
