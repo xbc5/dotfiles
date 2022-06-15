@@ -24,11 +24,13 @@
     (browse-url (format "https://news.ycombinator.com/item?id=%s" path)))
   (add-to-list 'org-modules 'ol-info) ;; for 'info:' links
   (org-add-link-type "rfc" 'my/open-rfc-link)
+  (org-add-link-type "RFC" 'my/open-rfc-link)
   (org-add-link-type "cmc" 'my/open-coinmarketcap-link)
   (org-add-link-type "caniuse" 'my/open-caniuse-link)
   (org-add-link-type "mdn-css" 'my/open-mdncss-link)
   (org-add-link-type "reddit" 'my/open-reddit-link)
   (org-add-link-type "hn" 'my/open-hn-link)
+  (org-add-link-type "HN" 'my/open-hn-link)
   (setq org-agenda-file-regexp "^.*todos.org$")
   (setq org-startup-folded t
         org-cycle-max-level 2
