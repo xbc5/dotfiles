@@ -53,6 +53,7 @@ PATH+=":${HOME}/bin";
 PATH+=":${HOME}/.emacs.d/bin";
 PATH+=":${HOME}/.luarocks/bin";
 PATH+=":${HOME}/WIP";
+PATH+=":${NPM_PACKAGES}/pnpm-bin";
 [[ `command -v go` ]] && PATH+=":$(go env GOPATH)/bin";
 export PATH;
 
@@ -139,16 +140,6 @@ white=`tput setaf 7`
 bold=`tput bold`
 reset=`tput sgr0`
 
-# FUNCTIONS
-# gitignore templates
-function __gi () {
-  if [[ $1 == "easy" ]]; then
-    gi linux visualstudiocode vim react node;
-  else
-    gi $@;
-  fi
-}
-
 function setup() {
   # quickly initialise tools for a dev environment
 
@@ -226,7 +217,6 @@ function svelte-init() {
 }
 
 # git
-alias gi="__gi";
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias gsf="git ls-tree --full-tree -r HEAD";  #  show all repo files
 # common spelling mistakes
@@ -239,7 +229,7 @@ alias status="sudo systemctl status";
 alias show="sudo systemctl | grep -i";
 # pyenv
 alias pc="pyenv virtualenv";
-alias pl="pyenv virtualenvs";
+# alias pl="pyenv virtualenvs";
 alias ph="pyenv help";
 alias pv="pyenv versions";
 alias pa="pyenv activate";
@@ -248,6 +238,7 @@ alias pd="pyenv deactivate";
 alias p="pnpm";
 alias pr="pnpm run";
 alias pt="reset && pnpm run test --";
+alias pl="reset && pnpm run check:lint --";
 alias pad="pnpm add --save-dev";
 alias pa="pnpm add";
 alias y="\yarn";
