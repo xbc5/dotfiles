@@ -152,9 +152,8 @@ alias zshrc="$EDITOR ${HOME}/.zshrc && reload"
 alias vim="echo nope."
 
 function sa() {
-  local key="`ls ${HOME}/.ssh/*.priv | fzf`"
-  [[ key == "" ]] && return
-  ssh-add "${key}"
+  local key="`\ls ${HOME}/.ssh/*.priv | fzf`"
+  [[ -n "$key" ]] && ssh-add "${key}"
 }
 
 # pyenv - add a number of paths, also this modified PATH,
