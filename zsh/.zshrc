@@ -89,12 +89,14 @@ zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 # tmux
 zinit ice lucid wait
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
-# cd - fzf
-zinit ice lucid wait
-zinit light changyuheng/zsh-interactive-cd
 # fzf command history
 zinit ice lucid wait'0'
 zinit light joshskidmore/zsh-fzf-history-search
+# fzf tab complete everything
+zinit light Aloxaf/fzf-tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa \
+ --color=always --classify --icons --long --no-permissions \
+ --no-time --git --no-filesize $realpath'
 # wd plug-in
 zinit ice wait lucid svn
 zinit snippet OMZ::plugins/wd
@@ -248,6 +250,14 @@ alias gie="gh issue edit";
 alias gn="gh notify";
 alias grf="gh repo fork --clone --remote"
 alias giv="gh issue view --comments"
+
+# exa
+export TIME_STYLE=long-iso
+export EXA_STRICT=true
+alias exa="exa --color=always --classify --icons --created"
+alias ls="exa"
+alias lsa="exa --long --git"
+alias lst="exa --long --git --sort created"
 
 # zsh
 alias zlerc="$EDITOR ${HOME}/.zsh/zle.zsh && reload"
