@@ -74,6 +74,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa \
 # wd plug-in
 zinit ice wait lucid svn
 zinit snippet OMZ::plugins/wd
+# add git remotes: e.g. add-upstream | add-remote
+zinit light caarlos0-graveyard/git-add-remote
 
 # load auto-completion engine, must be after plug-ins, and before any cdreplay
 # https://github.com/zdharma/zinit#completions-2
