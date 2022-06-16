@@ -28,17 +28,12 @@ export CARGO_HOME="${HOME}/.cargo"
 export CHROME_BIN="chromium-freeworld" # for `ng test`
 export GIT_LREPOS="${HOME}/git"
 export NPM_PACKAGES="${HOME}/.npm-packages"
-export PAGER="less"
+export PAGER="less -R"
 export PYTHONPATH_USER="${HOME}/.local/bin"
 export PYENV_ROOT="${HOME}/.pyenv"
 export PGPASSFILE="${HOME}/.pgpass"
 
-export IDE="kitty --class=ide --detach nvim"
-
 export FZF_DEFAULT_OPTS="--border --color=16"
-export DEV_PROJECTS="${HOME}/projects"
-export DEV_PRACTICE="${HOME}/practice"
-export DEV_DIRS="${DEV_PROJECTS}:${DEV_PRACTICE}"
 
 PATH="$PATH";
 PATH+=":${HOME}/.pyenv/bin";
@@ -53,26 +48,6 @@ PATH+=":${NPM_PACKAGES}/pnpm-bin";
 [[ `command -v go` ]] && PATH+=":$(go env GOPATH)/bin";
 export PATH;
 
-conf="${HOME}/.config"
-FUZZY_OPEN_TARGETS="${HOME}:1;"
-FUZZY_OPEN_TARGETS+="${HOME}/doc:X;"
-FUZZY_OPEN_TARGETS+="${HOME}/projects:X;"
-FUZZY_OPEN_TARGETS+="${HOME}/org:X;"
-FUZZY_OPEN_TARGETS+="${HOME}/WIP:X;"
-FUZZY_OPEN_TARGETS+="${HOME}/git:X;"
-FUZZY_OPEN_TARGETS+="${HOME}/dl:X;"
-FUZZY_OPEN_TARGETS+="${HOME}/tmp:X;"
-FUZZY_OPEN_TARGETS+="${conf}/Code/User:X;"
-FUZZY_OPEN_TARGETS+="${conf}/xfce4/terminal:X"
-export FUZZY_OPEN_TARGETS
-
-# Qubes split-ssh: listen on the ssh socket, then send it to ssh VM
-# if ! [[ -e "$SSH_AUTH_SOCK" ]]; then
-#   socat \
-#     UNIX-LISTEN:$SSH_AUTH_SOCK,unlink-early,reuseaddr,fork \
-#     EXEC:"qrexec-client-vm @dispvm qubes.SshAgent+dev" & # via dispvm, and through specified policy
-# fi
-
 # PLUG-INS
 # git
 zinit ice lucid wait
@@ -83,7 +58,6 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice lucid wait
 zinit snippet OMZ::plugins/gitignore/gitignore.plugin.zsh
 # ssh-agent
-# using split-ssh (via socat) instead
 zinit ice lucid wait
 zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 # tmux
@@ -105,25 +79,13 @@ zinit snippet OMZ::plugins/wd
 # https://github.com/zdharma/zinit#completions-2
 autoload -Uz compinit && compinit
 
-# kubectl: aliases + completions
-# broken
-#zinit ice wait lucid atload"zicdreplay"
-#zinit snippet OMZ::plugins/kubectl/kubectl.plugin.zsh
 # docker
 zinit ice wait lucid atload"zpcdreplay" atpull"zinit creinstall -q ."
 zinit light greymd/docker-zsh-completion
-# general / multi
-#zinit ice wait lucid blockf atpull"zinit creinstall -q ."
-#zinit light zsh-users/zsh-completions
-# must be loaded last: https://zdharma.org/zinit/wiki/Example-Minimal-Setup/
-#zinit ice wait lucid atload"_zsh_autosuggest_start"
-#zinit light zsh-users/zsh-autosuggestions
 
 # SOURCES
 # zsh line editor - e.g. key-binds etc.
 source "${HOME}/.zsh/zle.zsh"
-# load custom, untracked plug-ins
-#for f in ${HOME}/.zsh/plugins/*; do . ${f}; done; # don't source as string
 
 black=`tput setaf 0`
 red=`tput setaf 1`
@@ -137,84 +99,7 @@ white=`tput setaf 7`
 bold=`tput bold`
 reset=`tput sgr0`
 
-function setup() {
-  # quickly initialise tools for a dev environment
-
-  [[ `command -v go` ]] || echo "you need to install go, then rerun this command";
-
-  # kind: docker in docker for Kubernetes
-  # `go env GOPATH` should be included in PATH first
-  if ! [ `command -v kind` ] && [ `command -v go` ]; then
-    echo "installing kind..";
-    GO111MODULE="on" go get sigs.k8s.io/kind@latest
-  fi
-}
-
-function pull_docs() {
-  # use subshell so that the working directory can be changed
-  (
-    out_dir="${HOME}/doc/docsets"
-    docs=(
-      "Bash"
-      "Bootstrap_4"
-      "Bootstrap_5"
-      "C"
-      "CSS"
-      "Common_Lisp"
-      "Docker"
-      "Emacs_Lisp"
-      "Express"
-      "Font_Awesome"
-      "Go"
-      "HTML"
-      "JavaScript"
-      "LaTeX"
-      "Markdown"
-      "NodeJS"
-      "PostgreSQL"
-      "Python_3"
-      "React"
-      "Sass"
-      "TypeScript"
-      "Vim"
-      "WordPress"
-    )
-
-    docsets=`echo $docs | sed 's/ /, /g'`;
-    echo "docsets to be fetched: $docsets\n";
-
-    cd "${HOME}/git/feeds";
-    git checkout master > /dev/null 2>&1;
-    
-    for doc in "${docs[@]}"; do
-      url=`xpath -q -e '//entry/url[1]/text()' ${doc}.xml`;
-      surl=`echo $url | sed 's/^http:\/\//https:\/\//'`; # convert to TLS
-      out_file="${out_dir}/${doc}.tgz"
-      
-      echo -n "fetching ${bold}${doc}${reset} docs.. ${reset}";
-      curl --tlsv1.3 $surl --output $out_file > /dev/null 2>&1;
-      
-      if [[ $? == 0 ]]; then
-        echo "${green}${bold}ok${reset}"
-        (
-          cd $out_dir && tar xf $out_file && shred -un 1 $out_file
-        )
-      else
-        echo "${red}${bold}failed${reset}";
-      fi
-    done
-  )
-}
-
-function svelte-init() {
-  npx degit sveltejs/template "$1" \
-    && (cd "$1" \
-          && node scripts/setupTypeScript.js \
-          && npm install)
-}
-
 # git
-alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias gsf="git ls-tree --full-tree -r HEAD";  #  show all repo files
 # common spelling mistakes
 alias ha="ga"; # git plugin
@@ -260,9 +145,10 @@ alias lsa="exa --long --git"
 alias lst="exa --long --git --sort created"
 
 # zsh
-alias zlerc="$EDITOR ${HOME}/.zsh/zle.zsh && reload"
 alias reload="source ${HOME}/.zshrc && echo reload: zshrc reloaded";
 alias zshrc="$EDITOR ${HOME}/.zshrc && reload"
+
+# common
 alias vim="echo nope."
 
 function sa() {
