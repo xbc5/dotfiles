@@ -92,6 +92,9 @@ zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 # cd - fzf
 zinit ice lucid wait
 zinit light changyuheng/zsh-interactive-cd
+# fzf command history
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
 # wd plug-in
 zinit ice wait lucid svn
 zinit snippet OMZ::plugins/wd
