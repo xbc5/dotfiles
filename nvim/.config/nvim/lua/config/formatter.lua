@@ -1,5 +1,3 @@
-local npm = require("lib.npm")
-
 --[[
 Each formatter should return a table that consiste of:
   exe: the program you wish to run

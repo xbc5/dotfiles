@@ -73,7 +73,7 @@ return require('packer').startup({function(use)
     }
 
     use {
-      'chentau/marks.nvim',
+      'chentoast/marks.nvim',
       config = require'config.marks-nvim'.config,
     }
 
@@ -199,22 +199,12 @@ return require('packer').startup({function(use)
     use {
       'mhartington/formatter.nvim',
       config = require("config.formatter"),
-      run = function()
-        -- FIXME: conditionally check if npm exists, it might not
-        --npm.sync("prettier")
-        --npm.sync("@fsouza/prettierd")
-      end,
     }
 
     use {
       'mfussenegger/nvim-lint',
       disable = true,
       config = require("config.nvim-lint"),
-      run = function()
-        -- FIXME: conditionally check if npm exists, it might not
-        --npm.sync("eslint_d")
-        --npm.sync("@typescript-eslint/eslint-plugin")
-      end,
     }
   end,
 
