@@ -8,7 +8,7 @@ function M.install()
 
   local servers = {
     "gopls", "yamlls", "cssls", "tailwindcss", "tsserver", "svelte", "sumneko_lua", "cmake", "dockerls",
-    "emmet_ls", "terraformls", "html", "vimls", "pyright", "bashls", "jsonls", "rust_analyzer", -- "eslint" -- broken, so broken
+    "emmet_ls", "terraformls", "html", "vimls", "pyright",  "salt_ls", "bashls", "jsonls", "rust_analyzer", -- "eslint" -- broken, so broken
   }
 
   for _, server in pairs(servers) do
