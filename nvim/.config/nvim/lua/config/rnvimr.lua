@@ -9,7 +9,7 @@ function M.config()
 
   -- border
   g('rnvimr_draw_border', 1) -- BUG: doesn't work
-  g('rnvimr_ranger_cmd', 'ranger --cmd="set draw_borders both"') -- inner borders
+  g('rnvimr_ranger_cmd', { 'ranger', '--cmd=set draw_borders both' }) -- inner borders
 
   -- keys
   local opts = { silent = true, noremap = true }
