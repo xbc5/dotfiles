@@ -1,26 +1,19 @@
-[merge]
-  tool = kdiff3
-[mergetool "kdiff3"]
-  trustExitCode = true
-
-[gpg]
-  program = gpg
-
-[core]
-  editor = nvim
-
-[color]
-  ui = auto
-
-[diff]
-  tool = kitty
-[difftool]
-  trustExitCode = true
-[difftool "kitty"]
-  cmd = kitty +kitten diff $LOCAL $REMOTE
-
 [user]
-	name = xbc5
 	email = 87829033+xbc5@users.noreply.github.com
+	name = xbc5
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[pull]
+	rebase = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+  side-by-side = true
+  line-numbers = true
+[merge]
+	conflictStyle = zdiff3
