@@ -1,0 +1,84 @@
+# i3 config file (v4)
+
+include keymap.conf
+include i3bar.conf
+include modes.conf
+include assignments.conf
+
+#
+# MISC
+# -------------------------------------------------------------------------------------------------
+#font pango:monospace 8
+font pango:DejaVu Sans Mono 8
+#
+# "yes" causes some new windows to be sent to the other workspace. Use an explicit key instead.
+workspace_auto_back_and_forth no
+
+#
+# VARIABLES
+# -------------------------------------------------------------------------------------------------
+# The left-most mod (typically the Windows key).
+set $mod_a Mod4
+# The mod just beside it (typically Alt).
+set $mod_b Mod1
+
+# Movement.
+set $up k
+set $down j
+set $left h
+set $right l
+
+# NOTE: ] bracketright,  [ bracketleft, ' apostrophe, # numbersign, \ backslash, . period, , comma, ; semicolon
+
+# Workspace names.
+set $daily_ws "daily"
+set $daily_key "m"
+
+set $code_ws "code"
+set $code_key "n"
+
+set $dev_term_ws "dev-term"
+set $dev_term_key "u"
+
+set $email_ws "email"
+set $email_key "g"
+
+set $chat_ws "chat"
+set $chat_key "y"
+
+set $dom0_ws "dom0"
+set $dom0_key "bracketleft"
+
+set $sec_ws "sec"
+set $sec_key "i"
+
+set $temp_ws "temp"
+set $temp_key "o"
+
+set $misc_ws "misc"
+set $misc_key "semicolon"
+
+set $notes_ws "notes"
+set $notes_key "comma"
+
+set $dev_s_ws "dev-s"
+set $dev_s_key "p"
+
+set $dev_browser_ws "dev-b"
+set $dev_browser_key "b"
+
+set $template_ws "templates"
+set $template_key "t"
+
+set $docs_ws "docs"
+set $docs_key "period"
+
+#
+# EXEC
+# -------------------------------------------------------------------------------------------------
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id qubes-i3-xdg-autostart
+exec --no-startup-id setkb
+exec --no-startup-id trackpad off
