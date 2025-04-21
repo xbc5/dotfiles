@@ -1,8 +1,0 @@
-cd ~/projects/focus/backend
-os_window_class term
-launch --title focus/term zsh
-
-new_os_window
-os_window_class ide
-cd ~/projects/focus/backend
-launch --title focus/ide nvim
