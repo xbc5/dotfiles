@@ -1,0 +1,122 @@
+#!/bin/bash
+
+ZSH_DIR="${HOME}/.zsh"
+
+_help() {
+  cat <<EOF
+Usage: $(basename $0) COMMAND TARGET
+
+COMMAND
+  push        Install the TARGET.
+  pull        Pull the TARGET into the repository.
+  help        Show this help menu.
+
+TARGETS
+  -a          Everything.
+  -g          GIT, push or pull git configs.
+  -s          ASPELL, push or pull the aspell dicitonaries.
+  -z          ZSH, push or pull the zshrc, and $ZSH_DIR files.
+EOF
+}
+
+COMMAND="$1"
+# The thing that you're pushing.
+TARGET="$1"
+
+ROOT="$(realpath $(dirname $0))"
+
+# ASPELL
+# -----------------------------------------------------------------------------
+# Merge ~/.aspell* with its repo counterpart.
+_merge_aspell() {
+  local fname="$1"
+  if [[ -f "$HOME/$fname" ]]; then
+    local tmp="$(mktemp)"
+    trap "rm -f $tmp" EXIT
+
+    cat "$ROOT/aspell/$fname" >"$tmp" # Existing.
+    cat "$HOME/.$fname" >>"$tmp"      # Repo.
+
+    cat "$tmp" | uniq >"$ROOT/aspell/$fname" # Merge.
+  fi
+}
+
+# Merge local dictionaries into the repository.
+_pull_aspell() {
+  _merge_aspell "aspell.en.prepl"
+  _merge_aspell "aspell.en.pws"
+  echo "aspell dictionaries pulled"
+}
+
+_push_aspell() {
+  cp "$ROOT/aspell/aspell.en.prepl" "$HOME/.aspell.en.prepl"
+  cp "$ROOT/aspell/aspell.en.pws" "$HOME/.aspell.en.pws"
+  echo "aspell dictionaries pushed"
+}
+
+# GIT
+# -----------------------------------------------------------------------------
+_pull_git() {
+  cp "$HOME/.gitconfig" "$ROOT/git/gitconfig"
+  echo "git config pulled"
+}
+
+_push_git() {
+  cp "$ROOT/git/gitconfig" "${HOME}/.gitconfig"
+  echo "git config pushed"
+}
+
+# ZSH
+# -----------------------------------------------------------------------------
+_pull_zsh() {
+  cp "$HOME/.zshrc" "$ROOT/zsh/zshrc"
+  cp "$ZSH_DIR/zle.zsh" "$ROOT/zsh/"
+  echo "zsh config pulled"
+}
+
+_push_zsh() {
+  cp "$ROOT/zsh/zshrc" "${HOME}/.zshrc"
+  mkdir -p "$ZSH_DIR"
+  cp "$ROOT/zsh/zle.zsh" "${ZSH_DIR}/"
+  echo "zsh config pushed"
+}
+
+# ALL
+# -----------------------------------------------------------------------------
+_push_all() {
+  _push_aspell
+  _push_git
+  _push_zsh
+}
+
+_pull_all() {
+  _pull_aspell
+  _pull_git
+  _pull_zsh
+}
+
+FLAGS=":a:g:s:z:"
+case "$COMMAND" in
+push)
+  while getopts "$FLAGS" opts; do
+    case "${opts}" in
+    a) _push_all ;;
+    g) _push_git ;;
+    s) _push_aspell ;;
+    z) _push_zsh ;;
+    esac
+  done
+  ;;
+pull)
+  while getopts "$FLAGS" opts; do
+    case "${opts}" in
+    a) _pull_all ;;
+    g) _pull_git ;;
+    s) _pull_aspell ;;
+    z) _pull_zsh ;;
+    esac
+  done
+  ;;
+help) _help ;;
+*) echo -e "Unknown command: '$COMMAND'\n" && _help ;;
+esac
