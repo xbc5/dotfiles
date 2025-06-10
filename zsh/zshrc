@@ -71,14 +71,20 @@ alias zshrc="$EDITOR ${HOME}/.zshrc"
 alias reload="source ${HOME}/.zshrc"
 alias gitconfig="$EDITOR ${HOME}/.gitconfig"
 
+
+_ubi_install() {
+  command ubi --in "$USER_BIN" --project $@
+}
+
 ubi () {
   case "$1" in
     i|install)
       curl --silent --location https://raw.githubusercontent.com/houseabsolute/ubi/master/bootstrap/bootstrap-ubi.sh \
         | TARGET="$USER_BIN" sh 
       ;;
-    l|lazygit) command ubi --in "$USER_BIN" --project jesseduffield/lazygit;;
-    g|gh) command ubi --in "$USER_BIN" --project cli/cli --exe gh;;
+    l|lazygit) _ubi_install jesseduffield/lazygit;;
+    d|delta) _ubi_install dandavison/delta;;
+    g|gh) _ubi_install cli/cli --exe gh;;
     *) command ubi --in "$USER_BIN" ;;
   esac
   
