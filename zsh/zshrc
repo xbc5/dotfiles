@@ -78,6 +78,7 @@ ubi () {
         | TARGET="$USER_BIN" sh 
       ;;
     l|lazygit) command ubi --in "$USER_BIN" --project jesseduffield/lazygit;;
+    g|gh) command ubi --in "$USER_BIN" --project cli/cli --exe gh;;
     *) command ubi --in "$USER_BIN" ;;
   esac
   

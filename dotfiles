@@ -4,26 +4,38 @@ ZSH_DIR="${HOME}/.zsh"
 
 _help() {
   cat <<EOF
-Usage: $(basename $0) COMMAND TARGET
+Usage: $(basename $0) OPTIONS...
 
-COMMAND
-  push        Install the TARGET.
-  pull        Pull the TARGET into the repository.
-  help        Show this help menu.
+If you run this without arguments, it pulls ALL configs into
+the repository.
 
-TARGETS
+OPTIONS
   -a          Everything.
   -g          GIT, push or pull git configs.
+  -p          Push configs instead of pulling them.
   -s          ASPELL, push or pull the aspell dicitonaries.
   -z          ZSH, push or pull the zshrc, and $ZSH_DIR files.
+  -h          Display this help menu.
 EOF
 }
 
-COMMAND="$1"
-# The thing that you're pushing.
-TARGET="$1"
-
 ROOT="$(realpath $(dirname $0))"
+
+# We cannot embed getopts into a switch for some reason, so
+# I need to build up a list of targets, and loop over those instead.
+TARGETS=("all")
+COMMAND="pull"
+while getopts "aghpsz" opt; do
+  case "${opt}" in
+  # Map options to target names.
+  a) TARGETS=("all") && break ;; # Supersedes everything; destructively set it and break.
+  g) TARGETS+=("git") ;;
+  p) COMMAND="push" ;;
+  s) TARGETS+=("aspell") ;;
+  z) TARGETS+=("zsh") ;;
+  h) COMMAND="help" ;;
+  esac
+done
 
 # ASPELL
 # -----------------------------------------------------------------------------
@@ -49,35 +61,35 @@ _pull_aspell() {
 }
 
 _push_aspell() {
-  cp "$ROOT/aspell/aspell.en.prepl" "$HOME/.aspell.en.prepl"
-  cp "$ROOT/aspell/aspell.en.pws" "$HOME/.aspell.en.pws"
+  echo cp "$ROOT/aspell/aspell.en.prepl" "$HOME/.aspell.en.prepl"
+  echo cp "$ROOT/aspell/aspell.en.pws" "$HOME/.aspell.en.pws"
   echo "aspell dictionaries pushed"
 }
 
 # GIT
 # -----------------------------------------------------------------------------
 _pull_git() {
-  cp "$HOME/.gitconfig" "$ROOT/git/gitconfig"
+  echo cp "$HOME/.gitconfig" "$ROOT/git/gitconfig"
   echo "git config pulled"
 }
 
 _push_git() {
-  cp "$ROOT/git/gitconfig" "${HOME}/.gitconfig"
+  echo cp "$ROOT/git/gitconfig" "${HOME}/.gitconfig"
   echo "git config pushed"
 }
 
 # ZSH
 # -----------------------------------------------------------------------------
 _pull_zsh() {
-  cp "$HOME/.zshrc" "$ROOT/zsh/zshrc"
-  cp "$ZSH_DIR/zle.zsh" "$ROOT/zsh/"
+  echo cp "$HOME/.zshrc" "$ROOT/zsh/zshrc"
+  echo cp "$ZSH_DIR/zle.zsh" "$ROOT/zsh/"
   echo "zsh config pulled"
 }
 
 _push_zsh() {
-  cp "$ROOT/zsh/zshrc" "${HOME}/.zshrc"
-  mkdir -p "$ZSH_DIR"
-  cp "$ROOT/zsh/zle.zsh" "${ZSH_DIR}/"
+  echo cp "$ROOT/zsh/zshrc" "${HOME}/.zshrc"
+  echo mkdir -p "$ZSH_DIR"
+  echo cp "$ROOT/zsh/zle.zsh" "${ZSH_DIR}/"
   echo "zsh config pushed"
 }
 
@@ -95,28 +107,30 @@ _pull_all() {
   _pull_zsh
 }
 
-FLAGS=":a:g:s:z:"
+# Loop over target names and dispatch.
 case "$COMMAND" in
 push)
-  while getopts "$FLAGS" opts; do
-    case "${opts}" in
-    a) _push_all ;;
-    g) _push_git ;;
-    s) _push_aspell ;;
-    z) _push_zsh ;;
+  for target in "${TARGETS[@]}"; do
+    case "$target" in
+    all) _push_all ;; # If set, only this executes.
+    git) _push_git ;;
+    aspell) _push_aspell ;;
+    zsh) _push_zsh ;;
+    *) echo "unknown target: $target" >&2 ;;
     esac
   done
   ;;
 pull)
-  while getopts "$FLAGS" opts; do
-    case "${opts}" in
-    a) _pull_all ;;
-    g) _pull_git ;;
-    s) _pull_aspell ;;
-    z) _pull_zsh ;;
+  for target in "${TARGETS[@]}"; do
+    case "$target" in
+    all) _pull_all ;; # If set, only this executes.
+    git) _pull_git ;;
+    aspell) _pull_aspell ;;
+    zsh) _pull_zsh ;;
+    *) echo "unknown target: $target" >&2 ;;
     esac
   done
   ;;
 help) _help ;;
-*) echo -e "Unknown command: '$COMMAND'\n" && _help ;;
+*) echo -e "Unknown command: '$COMMAND'\n" >&2 && _help ;;
 esac
