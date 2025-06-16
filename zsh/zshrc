@@ -18,6 +18,13 @@ if zellij -h &>/dev/null; then
   source <(fzf --zsh)
 fi
 
+# EMACS
+if [[ -d "${HOME}/.emacs.d/bin" ]]; then
+  PATH+=":${HOME}/.emacs.d/bin"
+elif [[ -d "${HOME}/.config/emacs/bin" ]]; then 
+  PATH+=":${HOME}/.config/emacs/bin"
+fi
+
 # PLEASE
 if plz -h &>/dev/null; then
   PATH+=":${HOME}/.please" # does it twice for some reason
@@ -82,6 +89,7 @@ add () {
     gh) ubi --project cli/cli --exe gh;;
     lazygit) ubi --project jesseduffield/lazygit;;
     mise) curl https://mise.run | sh; reload;;
+    nickel) ubi --project tweag/nickel;;
     ubi)
       curl --silent --location https://raw.githubusercontent.com/houseabsolute/ubi/master/bootstrap/bootstrap-ubi.sh \
         | TARGET="$USER_BIN" sh 
