@@ -32,9 +32,9 @@ if plz -h &>/dev/null; then
 fi
 
 # MISE
-if mise -h &>/dev/null; then
-  eval "$(mise activate zsh)"
-fi
+# if mise -h &>/dev/null; then
+#   eval "$(mise activate zsh)"
+# fi
 
 # PNPM
 # pnpm
@@ -88,6 +88,7 @@ add () {
     delta) ubi --project dandavison/delta;;
     gh) ubi --project cli/cli --exe gh;;
     lazygit) ubi --project jesseduffield/lazygit;;
+    lazydocker) ubi --project jesseduffield/lazydocker;;
     mise) curl https://mise.run | sh; reload;;
     nickel) ubi --project tweag/nickel;;
     ubi)
@@ -100,6 +101,18 @@ add () {
 
 rg () {
   command rg --json -C 2 "$@" | delta
+}
+
+s () {
+  fzf --ansi --disabled \
+    --bind "change:reload:command \
+              rg --line-number --no-heading \
+              --color=always --smart-case {q} \
+              || :" \
+    --bind "enter:execute(${EDITOR:-nano} +{2} {1})" \
+    --delimiter ":" \
+    --preview "command bat -p --color=always {1} --highlight-line {2}" \
+    --preview-window 'up:80%,border-bottom,~3,+{2}+3/3'
 }
 
 
