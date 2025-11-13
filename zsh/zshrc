@@ -32,9 +32,9 @@ if plz -h &>/dev/null; then
 fi
 
 # MISE
-# if mise -h &>/dev/null; then
-#   eval "$(mise activate zsh)"
-# fi
+if mise -h &>/dev/null; then
+  eval "$(mise activate zsh)"
+fi
 
 # PNPM
 # pnpm
@@ -59,26 +59,35 @@ if pyenv -h &>/dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-
 ######################################################################
 #                             SHELL INIT                             #
 ######################################################################
+
+
+# Must be AFTER plugins, because I may map plugins to keys via the ZLE.
+source "$HOME/.zsh/zle.zsh"
+
 # ZINIT
-if [[ -f "/usr/scripts/init-zinit" ]]; then
-   source /usr/scripts/init-zinit
+if `which init-zinit &>/dev/null`; then
+   source `which init-zinit`
 fi
+
+NIXSH="$HOME/.nix-profile/etc/profile.d/nix.sh"
+if [ -e "$NIXSH" ]; then
+  source "$NIXSH"
+fi 
 
 
 ######################################################################
 #                              ALIASES                               #
 ######################################################################
 # Declare the absolutely last, so that they override binaries.
+alias gitconfig="$EDITOR ${HOME}/.gitconfig"
+alias paths="echo $PATH | tr ':' '\n' | fzf" # Ordered list of PATH values; 1 is bottom.
+alias reload="source ${HOME}/.zshrc"
+alias task="go-task"
 alias x="xclip -selection clipboard"
 alias zshrc="$EDITOR ${HOME}/.zshrc"
-alias reload="source ${HOME}/.zshrc"
-alias gitconfig="$EDITOR ${HOME}/.gitconfig"
-alias task="go-task"
-
 
 ubi() {
   command ubi --in "$USER_BIN" $@
@@ -116,5 +125,6 @@ s () {
     --preview-window 'up:80%,border-bottom,~3,+{2}+3/3'
 }
 
-
 export PATH
+
+
