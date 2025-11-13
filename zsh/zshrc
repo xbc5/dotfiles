@@ -89,6 +89,10 @@ alias task="go-task"
 alias x="xclip -selection clipboard"
 alias zshrc="$EDITOR ${HOME}/.zshrc"
 
+mkd() {
+    mkdir -p -- "$1" && cd -P -- "$1"
+}
+
 ubi() {
   command ubi --in "$USER_BIN" $@
 }
